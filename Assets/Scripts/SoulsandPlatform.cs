@@ -21,4 +21,12 @@ public class SoulsandPlatform : MonoBehaviour {
             collision.gameObject.GetComponent<Player>().m_JumpForce = 2;
         }
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player>().m_JumpForce = 7;
+        }
+    }
 }
