@@ -9,7 +9,8 @@ public class Player : MonoBehaviour {
     public float m_JumpForce;
     public bool m_IsTouchingFloor;
     public bool m_IsDashing;
-    public bool DashCooldownOver; 
+    public bool DashCooldownOver;
+    public bool HasTouchedFloor; //per no poder fer dos dashes sense tocar terra 
     Vector3 DashDestination;
     public float step;
 	
@@ -52,7 +53,6 @@ public class Player : MonoBehaviour {
 
             if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver) //Move right
             {
-                
                 DashCooldownOver = false;
                 StartCoroutine(DashCooldown());
                 m_IsDashing = true;
@@ -80,7 +80,6 @@ public class Player : MonoBehaviour {
 
         if (Vector3.Distance(this.transform.position, DashDestination) <= 0.01f)
         {
-            m_PlayerRB2D.gravityScale = 2;
             m_IsDashing = false;
         }
 
@@ -91,8 +90,25 @@ public class Player : MonoBehaviour {
         if(collision.collider.CompareTag("floor"))
         {
             m_IsTouchingFloor = true;
-        } 
+            
+        }
+
+        if (collision.collider.CompareTag("Wall"))
+        {
+            m_IsDashing = false;
+        }
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Wall"))
+        {
+            m_IsDashing = false;
+        }
+    }
+
+
+
 
     public IEnumerator DashCooldown()
     {
