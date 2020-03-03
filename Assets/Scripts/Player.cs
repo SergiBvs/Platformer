@@ -34,10 +34,11 @@ public class Player : MonoBehaviour {
 
             if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver) //Move right
             {
+                
                 DashCooldownOver = false;
                 StartCoroutine(DashCooldown());
                 m_IsDashing = true;
-                DashDestination = new Vector3 (this.transform.position.x + 5 , 0 , 0);
+                DashDestination = new Vector3 (this.transform.position.x + 5 , this.transform.position.y , 0);
             }
         }
         else if(Input.GetAxisRaw("Horizontal") < 0) //Move Left
@@ -51,10 +52,11 @@ public class Player : MonoBehaviour {
 
             if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver) //Move right
             {
+                
                 DashCooldownOver = false;
                 StartCoroutine(DashCooldown());
                 m_IsDashing = true;
-                DashDestination = new Vector3(this.transform.position.x - 5, 0, 0);
+                DashDestination = new Vector3(this.transform.position.x - 5, this.transform.position.y, 0);
             }
         }
         else
@@ -78,6 +80,7 @@ public class Player : MonoBehaviour {
 
         if (Vector3.Distance(this.transform.position, DashDestination) <= 0.01f)
         {
+            m_PlayerRB2D.gravityScale = 2;
             m_IsDashing = false;
         }
 
