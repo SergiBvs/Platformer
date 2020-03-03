@@ -9,11 +9,13 @@ public class Player : MonoBehaviour {
     public float m_JumpForce;
     public bool m_IsTouchingFloor;
     public bool m_IsDashing;
+    public bool DashCooldownOver; 
     Vector3 DashDestination;
-    float step;
+    public float step;
 	
 	void Start ()
     {
+        DashCooldownOver = true;
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
 	}
 	
@@ -22,25 +24,42 @@ public class Player : MonoBehaviour {
     {
 		if(Input.GetAxisRaw("Horizontal") > 0) //Move right
         {
-            this.transform.position += Vector3.right * Time.deltaTime * m_PlayerSpeed;
+           
+            m_PlayerRB2D.AddForce(new Vector2(1f, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
 
-            /*  if ((Input.GetAxisRaw("Horizontal") > 0) && (IsMoving == false)) //Move right
-                {
-                    if(CurrentPos == "Central")
-                    {
+            if(m_PlayerRB2D.velocity.x >= 1)
+            {
+                m_PlayerRB2D.velocity = new Vector2(m_PlayerSpeed, m_PlayerRB2D.velocity.y);
+            }
 
-                        IsMoving = true;
-                        CurrentPos = "Derecha";
-                        Destino = Ambulancias[2].position;
-                        CurrentCD = 0;
-                        m_Animator.SetTrigger("TurnedRight");
-
-
-                    }*/
+            if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver) //Move right
+            {
+                DashCooldownOver = false;
+                StartCoroutine(DashCooldown());
+                m_IsDashing = true;
+                DashDestination = new Vector3 (this.transform.position.x + 5 , 0 , 0);
+            }
         }
         else if(Input.GetAxisRaw("Horizontal") < 0) //Move Left
         {
-            this.transform.position += Vector3.left * Time.deltaTime * m_PlayerSpeed;
+            m_PlayerRB2D.AddForce(new Vector2(-1, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
+            
+            if(m_PlayerRB2D.velocity.x <= -1)
+            {
+                m_PlayerRB2D.velocity = new Vector2(-m_PlayerSpeed, m_PlayerRB2D.velocity.y);
+            }
+
+            if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver) //Move right
+            {
+                DashCooldownOver = false;
+                StartCoroutine(DashCooldown());
+                m_IsDashing = true;
+                DashDestination = new Vector3(this.transform.position.x - 5, 0, 0);
+            }
+        }
+        else
+        {
+            m_PlayerRB2D.velocity = new Vector3(0, m_PlayerRB2D.velocity.y);
         }
 
         if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
@@ -52,13 +71,17 @@ public class Player : MonoBehaviour {
             }
         }
 
-        if(!m_IsDashing)
+        if(m_IsDashing)
         {
-            //transform.position = Vector3.MoveTowards(this.transform.position, Destination, step);
+            transform.position = Vector3.MoveTowards(this.transform.position, DashDestination, step);
         }
 
-	}
+        if (Vector3.Distance(this.transform.position, DashDestination) <= 0.01f)
+        {
+            m_IsDashing = false;
+        }
 
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -66,5 +89,11 @@ public class Player : MonoBehaviour {
         {
             m_IsTouchingFloor = true;
         } 
+    }
+
+    public IEnumerator DashCooldown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        DashCooldownOver = true;
     }
 }
