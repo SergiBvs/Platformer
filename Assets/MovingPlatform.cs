@@ -36,4 +36,15 @@ public class MovingPlatform : MonoBehaviour {
             currentTarget = pivots[targetInt];
         }
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        collision.transform.parent = this.transform;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        collision.transform.parent = null;
+    }
+
 }
