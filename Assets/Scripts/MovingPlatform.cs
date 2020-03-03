@@ -20,7 +20,7 @@ public class MovingPlatform : MonoBehaviour {
 	void Update () {
 
         
-        this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, 0.2f);
+        this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, 0.1f);
         if(this.transform.position == currentTarget.position)
         {
             if(targetInt == pivots.Length -1)
