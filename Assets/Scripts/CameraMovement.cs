@@ -14,7 +14,7 @@ public class CameraMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.transform.position = new Vector3(m_playerPosition.position.x, m_playerPosition.position.y+yoffset,this.transform.position.z);
+		this.transform.position = new Vector3(m_playerPosition.position.x,this.transform.position.y+yoffset,this.transform.position.z);
 		//this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(m_playerPosition.position.x, m_playerPosition.position.y + yoffset, this.transform.position.z), 0.1f);
 	}
 }
