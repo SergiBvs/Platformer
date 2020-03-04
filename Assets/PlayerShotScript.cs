@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShotScript : MonoBehaviour {
 
-    float dir;
+    public float dir;
     private Player playerScript;
 
     public float shotSpeed;

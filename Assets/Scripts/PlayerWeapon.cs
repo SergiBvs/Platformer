@@ -7,7 +7,7 @@ public class PlayerWeapon : MonoBehaviour {
     public int m_ammo = 3;
     public GameObject m_shot;
 
-    
+    public GameObject gunTip;
 
     bool m_weaponReady = true;
     
@@ -23,13 +23,20 @@ public class PlayerWeapon : MonoBehaviour {
             if (m_weaponReady)
             {
                 m_weaponReady = false;
-                m_shot = (GameObject)Resources.Load("Shot");
-                Instantiate(m_shot, this.transform.position + new Vector3(1,1,0), Quaternion.Euler(0, 0, 45));
-                
+                m_shot = Instantiate((GameObject)Resources.Load("Shot"), gunTip.transform.position, gunTip.transform.rotation);
+                m_shot.GetComponent<Rigidbody2D>().velocity = gunTip.transform.right * 7f; 
+                //Instantiate(m_shot, this.transform.position, transform.rotation);      
                 StartCoroutine(WeaponCooldown());
             }
         }
-	}
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        float AngleRad = Mathf.Atan2(mousePos.y - transform.position.y,mousePos.x - transform.position.x);
+        float AngleDeg = (180 / Mathf.PI) * AngleRad;
+
+        // Rotate Object
+        this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
+    }
 
     IEnumerator WeaponCooldown()
     {
