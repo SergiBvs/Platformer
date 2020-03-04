@@ -126,6 +126,21 @@ public class Player : MonoBehaviour {
         {
             HasTouchedFloor = true;
         }
+        else if(collision.collider.CompareTag("EnemyBody"))
+        {
+            if(!m_IsDashing)
+            {
+                print("perder una vida y morir si no te quedan");
+            }
+            else //si haces un dash o les saltas en la cabeza mueren
+            {
+                Destroy(collision.gameObject);
+            }
+        }
+        else if(collision.collider.CompareTag("EnemyHead"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
