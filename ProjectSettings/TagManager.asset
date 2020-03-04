@@ -10,6 +10,8 @@ TagManager:
   - JumpPad
   - DeathZone
   - Portal
+  - BasicEnemy
+  - EnemyHead
   layers:
   - Default
   - TransparentFX
