@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4950098158864430}
   - component: {fileID: 212608685023963008}
   - component: {fileID: 58186247584221258}
+  - component: {fileID: 114240441621910092}
   m_Layer: 0
   m_Name: Explosion
-  m_TagString: Untagged
+  m_TagString: PlayerShotExplosion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,12 +51,23 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.86
+--- !u!114 &114240441621910092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1255240069600318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebcbc6473ae37499d9f8ae9516de23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212608685023963008
 SpriteRenderer:
   m_ObjectHideFlags: 1
