@@ -23,7 +23,8 @@ public class Player : MonoBehaviour {
 
     public Rigidbody2D m_PlayerRB2D;
     Vector3 DashDestination;
-    public GameObject MainCamera; 
+    public GameObject MainCamera;
+    
 
 	void Start ()
     {
@@ -124,13 +125,6 @@ public class Player : MonoBehaviour {
         else if (collision.collider.CompareTag("JumpPad"))
         {
             HasTouchedFloor = true;
-        }
-        else if (collision.collider.CompareTag("DeathZone"))
-        {
-            m_IsDashing = false;
-            m_PlayerRB2D.gravityScale = 2;
-            print("You're dead lmao, destroy game object and restart level");
-            this.transform.position = new Vector3(0, 4);
         }
     }
 
