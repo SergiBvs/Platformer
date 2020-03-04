@@ -43,9 +43,9 @@ public class Player : MonoBehaviour {
                 m_PlayerRB2D.velocity = new Vector2(m_PlayerSpeed, m_PlayerRB2D.velocity.y);
             }
 
-            if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver && HasTouchedFloor) //Move right
+            if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver && HasTouchedFloor) //Dash right
             {
-                m_PlayerRB2D.gravityScale = 0;
+                //m_PlayerRB2D.gravityScale = 0;
                 HasTouchedFloor = false;
                 DashCooldownOver = false;
                 m_IsDashing = true;
@@ -62,9 +62,9 @@ public class Player : MonoBehaviour {
                 m_PlayerRB2D.velocity = new Vector2(-m_PlayerSpeed, m_PlayerRB2D.velocity.y);
             }
 
-            if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver && HasTouchedFloor) //Move right
+            if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver && HasTouchedFloor) //Dash Left
             {
-                m_PlayerRB2D.gravityScale = 0;
+                //m_PlayerRB2D.gravityScale = 0;
                 HasTouchedFloor = false;
                 DashCooldownOver = false;
                 StartCoroutine(DashCooldown());
@@ -84,13 +84,13 @@ public class Player : MonoBehaviour {
 
         if(m_IsDashing)
         {
+            m_PlayerRB2D.velocity = new Vector2(m_PlayerRB2D.velocity.x, 0);
             transform.position = Vector3.MoveTowards(this.transform.position, DashDestination, step);
-        }
-
-        if (Vector3.Distance(this.transform.position, DashDestination) <= 0.01f)
-        {
-            m_IsDashing = false;
-            m_PlayerRB2D.gravityScale = 2;
+            if (Vector3.Distance(this.transform.position, DashDestination) <= 0.01f)
+            {
+                m_IsDashing = false;
+                //m_PlayerRB2D.gravityScale = 2;
+            }
         }
 
     }
@@ -140,7 +140,8 @@ public class Player : MonoBehaviour {
         else if(collision.collider.CompareTag("EnemyHead"))
         {
             m_IsTouchingFloor = true;
-            Jump();
+            HasTouchedFloor = true;
+            Jump(); //rebote.
             Destroy(collision.gameObject);
         }
     }

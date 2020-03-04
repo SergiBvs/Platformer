@@ -21,20 +21,21 @@ public class Portal : MonoBehaviour {
     {
         if(!m_GameManager.m_PortalUsed)
         {
-            //if(collision.CompareTag("Player"))  
-            //{
+            if(collision.CompareTag("Player"))  
+            {
                 m_GameManager.m_PortalUsed = true;
                 collision.gameObject.transform.position = m_ConnectedPortal.transform.position;
-            //}
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //if (collision.CompareTag("Player"))
-       // {
+        if (collision.CompareTag("Player"))
+        {
             StartCoroutine(PortalCooldown());
-       // }
+       }
+       
     }
 
     IEnumerator PortalCooldown()
