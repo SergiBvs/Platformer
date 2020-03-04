@@ -5,6 +5,12 @@ using UnityEngine;
 public class DeathZone : MonoBehaviour {
 
     public Transform m_RespawnPoint;
+    private GameManager m_GameManager;
+
+    void Start()
+    {
+        m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -12,8 +18,18 @@ public class DeathZone : MonoBehaviour {
         {
             collision.gameObject.GetComponent<Player>().m_IsDashing = false;
             collision.gameObject.GetComponent<Player>().m_PlayerRB2D.gravityScale = 2;
-            collision.gameObject.GetComponent<Player>().transform.position = m_RespawnPoint.position; 
-            //Quan es perdin totes les vides reiniciarem el nivell
+
+            m_GameManager.m_Health--;
+
+            if(m_GameManager.m_Health > 0)
+            {
+                collision.gameObject.GetComponent<Player>().transform.position = m_RespawnPoint.position; 
+            }
+            else
+            {
+                //pon la pantalla de muerte
+            }
+
         }
     }
 }

@@ -15,7 +15,7 @@ public class Coin : MonoBehaviour {
     {
         if(collision.CompareTag("Player"))
         {
-            m_GameManager.SumarCoins();
+            m_GameManager.m_Coins++;
             Destroy(this.gameObject);
         }
     }

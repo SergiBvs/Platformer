@@ -24,10 +24,35 @@ public class GameManager : MonoBehaviour {
 	void Update ()
     {
         m_textCoins.text = "Coins : " + m_Coins;
+        HealthSystem();
     }
 
-    public void SumarCoins()
+    public void HealthSystem()
     {
-        m_Coins++;
+        if (m_Health > m_nOfHearts)
+        {
+            m_Health = m_nOfHearts;
+        }
+
+        for (int i = 0; i < m_Hearts.Length; i++)
+        {
+            if (i < m_Health)
+            {
+                m_Hearts[i].sprite = FullHeart;
+            }
+            else
+            {
+                m_Hearts[i].sprite = EmptyHeart;
+            }
+
+            if (i < m_nOfHearts)
+            {
+                m_Hearts[i].enabled = true;
+            }
+            else
+            {
+                m_Hearts[i].enabled = false;
+            }
+        }
     }
 }

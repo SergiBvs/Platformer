@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     // MOVIMIENTOS
-    float m_direction;
+    public float m_direction;
 
     //FUERZAS QUE AFECTAN AL PERSONAJE
 
@@ -25,12 +25,13 @@ public class Player : MonoBehaviour {
 
     public Rigidbody2D m_PlayerRB2D;
     Vector3 DashDestination;
+    private GameManager m_GameManager;
 
 	void Start ()
     {
         DashCooldownOver = true;
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
-        
+        m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 	
 	
@@ -128,7 +129,12 @@ public class Player : MonoBehaviour {
         {
             if(!m_IsDashing)
             {
-                print("perder una vida y morir si no te quedan");
+                m_GameManager.m_Health--;
+
+                if(m_GameManager.m_Health <= 0)
+                {
+                    Destroy(this.gameObject);
+                }
             }
             else //si haces un dash o les saltas en la cabeza mueren
             {
