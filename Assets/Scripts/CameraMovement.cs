@@ -7,41 +7,70 @@ public class CameraMovement : MonoBehaviour {
 	Transform m_playerPosition;
 	public float yoffset;
 
-    float lerpSpeed;
-	
-	// Use this for initialization
-	void Start () {
+    float DistanceX;
+    float DistanceY;
+
+    float dirX;
+    float dirY;
+
+    // Use this for initialization
+    void Start () {
 		m_playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
+    // Update is called once per frame
+    void Update()
+    {
 
-        //this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(m_playerPosition.position.x, m_playerPosition.position.y + yoffset, this.transform.position.z), 0.1f);
-        lerpSpeed = Vector2.Distance(transform.position, m_playerPosition.position);
-        float lerpSpeedX = Mathf.Abs(transform.position.x - m_playerPosition.position.x);
-        float lerpSpeedY = Mathf.Abs(transform.position.y - m_playerPosition.position.y);
+        dirX = transform.position.x - m_playerPosition.position.x;
+        dirY = transform.position.y - m_playerPosition.position.y;
 
-        if(lerpSpeedX < 1f)
+        DistanceX = Mathf.Abs(dirX);
+        DistanceY = Mathf.Abs(dirY);
+
+        //if(DistanceX < 1f)
+        //{
+        //    DistanceX = 0;
+        //}else if (DistanceX > 2.5f)
+        //{
+        //    DistanceX = 2.5f;
+        //}
+
+        //if (lerpSpeedX < 1f)
+        //{
+        //    lerpSpeedX = 0;
+        //}
+        //else if (lerpSpeedX > 2.5f)
+        //{
+        //    lerpSpeedX = 2.5f;
+        //}
+
+        if (DistanceX > 3)
         {
-            lerpSpeedX = 0;
+            if (DistanceY > 3)
+            {
+                transform.position = Vector2.Lerp(transform.position, m_playerPosition.position, 1f * Time.deltaTime);
+            }
+
+            transform.position = Vector2.Lerp(transform.position, new Vector2(m_playerPosition.position.x, transform.position.y), 1f * Time.deltaTime);
         }
 
 
-        if(transform.position.y < m_playerPosition.position.y - 3)
-        {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(m_playerPosition.position.x, m_playerPosition.position.y + 1, transform.position.z), lerpSpeed/10*Time.deltaTime);
-        }
-        else if (transform.position.y > m_playerPosition.position.y + 3)
-        {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(m_playerPosition.position.x, m_playerPosition.position.y -1, transform.position.z),lerpSpeed/10 * Time.deltaTime);
-        }
-        else
-        {
-            this.transform.position = Vector3.Lerp(transform.position, new Vector3(m_playerPosition.position.x, this.transform.position.y, this.transform.position.z),lerpSpeedX * Time.deltaTime);
-        }
-
-        print(lerpSpeedX + "   " + lerpSpeedY);
     }
+
+    //    if (transform.position.y < m_playerPosition.position.y - 3)
+    //    {
+    //        transform.position = Vector3.Lerp(transform.position, new Vector3(m_playerPosition.position.x, m_playerPosition.position.y + 1, transform.position.z), lerpSpeedY*Time.deltaTime);
+    //    }
+    //    else if (transform.position.y > m_playerPosition.position.y + 3)
+    //    {
+    //        transform.position = Vector3.Lerp(transform.position, new Vector3(m_playerPosition.position.x, m_playerPosition.position.y -1, transform.position.z),lerpSpeedY * Time.deltaTime);
+    //    }
+    //    else
+    //    {
+    //        this.transform.position = Vector3.Lerp(transform.position, new Vector3(m_playerPosition.position.x, this.transform.position.y, this.transform.position.z),lerpSpeedX * Time.deltaTime);
+    //    }
+
+    //    print(lerpSpeedX + "   " + lerpSpeedY);
+    //}
 }
