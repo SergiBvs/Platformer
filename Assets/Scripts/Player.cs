@@ -79,6 +79,19 @@ public class Player : MonoBehaviour {
         {
             Dash();
         }
+
+        //GIRAR
+        Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float mousePos = transform.position.x - mouse.x;
+        
+        if(mousePos > 0)
+        {
+            transform.localScale = new Vector2(-1,1);
+        } 
+        else
+        {
+            transform.localScale = new Vector2(1, 1);
+        }
     }
 
     void Dash()
