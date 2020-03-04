@@ -11,21 +11,6 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1464121883090982}
   m_IsPrefabAsset: 1
---- !u!1 &1159732290154308
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4101674421619118}
-  m_Layer: 0
-  m_Name: Pivot 2 (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1199262130087988
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,19 +119,6 @@ Transform:
   m_Father: {fileID: 4465100856271056}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4101674421619118
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1159732290154308}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.054, y: -10.5, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4465100856271056}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4195748097620694
 Transform:
   m_ObjectHideFlags: 1
@@ -167,13 +139,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1464121883090982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.74, y: 5.1, z: 0}
+  m_LocalPosition: {x: -1.9603097, y: 0.8735559, z: 0}
   m_LocalScale: {x: 5.067, y: 0.501, z: 1}
   m_Children:
   - {fileID: 4068409200916476}
   - {fileID: 4673938987904762}
   - {fileID: 4098376232636810}
-  - {fileID: 4101674421619118}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -198,7 +169,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1587086969917624}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 0694b067d60f79f4587d92bcac03fd94, type: 2}
+  m_Material: {fileID: 6200000, guid: f1525d689fa2dd140bb655c9e2cac489, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -254,7 +225,6 @@ MonoBehaviour:
   pivots:
   - {fileID: 4068409200916476}
   - {fileID: 4673938987904762}
-  - {fileID: 4101674421619118}
 --- !u!212 &212625421623808198
 SpriteRenderer:
   m_ObjectHideFlags: 1

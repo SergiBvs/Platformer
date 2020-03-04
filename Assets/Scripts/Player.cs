@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    public GameObject MainCamera; 
+
+    //FUERZAS QUE AFECTAN AL PERSONAJE
+
     public int m_PlayerSpeed;
-    Rigidbody2D m_PlayerRB2D;
     public float m_JumpForce;
+    public float step;
+
+    //COMPROBACIONES DE COSAS
+
     public bool m_IsTouchingFloor;
     public bool m_IsDashing;
     public bool DashCooldownOver;
     public bool HasTouchedFloor; //per no poder fer dos dashes sense tocar terra 
+    public bool m_IsOnIce;
+
+    //OTRAS COSAS
+
+    Rigidbody2D m_PlayerRB2D;
     Vector3 DashDestination;
-    public float step;
-	
+    public GameObject MainCamera; 
+
 	void Start ()
     {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -66,7 +76,7 @@ public class Player : MonoBehaviour {
                 DashDestination = new Vector3(this.transform.position.x - 5, this.transform.position.y, 0);
             }
         }
-        else
+        else if (!m_IsOnIce)
         {
             m_PlayerRB2D.velocity = new Vector3(0, m_PlayerRB2D.velocity.y);
         }
@@ -99,13 +109,17 @@ public class Player : MonoBehaviour {
         {
             m_IsTouchingFloor = true;
             HasTouchedFloor = true;
-            
         }
-
-        if (collision.collider.CompareTag("Wall"))
+        else if (collision.collider.CompareTag("Wall"))
         {
             m_IsDashing = false;
             m_PlayerRB2D.gravityScale = 2;
+        }
+        else if(collision.collider.CompareTag("Ice"))
+        {
+            m_IsTouchingFloor = true;
+            m_IsOnIce = true;
+            HasTouchedFloor = true;
         }
     }
 
@@ -115,11 +129,16 @@ public class Player : MonoBehaviour {
         {
             HasTouchedFloor = true;
         }
-
-        if (collision.collider.CompareTag("Wall"))
+        else if (collision.collider.CompareTag("Wall"))
         {
             m_IsDashing = false;
             m_PlayerRB2D.gravityScale = 2;
+        }
+        else if (collision.collider.CompareTag("Ice"))
+        {
+            m_IsTouchingFloor = true;
+            m_IsOnIce = true;
+            HasTouchedFloor = true;
         }
     }
 
@@ -128,6 +147,11 @@ public class Player : MonoBehaviour {
         if (collision.collider.CompareTag("floor"))
         {
             m_IsTouchingFloor = false; 
+        }
+        else if (collision.collider.CompareTag("Ice"))
+        {
+            m_IsTouchingFloor = false;
+            m_IsOnIce = false;
         }
     }
 
