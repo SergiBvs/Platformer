@@ -84,11 +84,7 @@ public class Player : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
-            if(m_IsTouchingFloor)
-            {
-                m_PlayerRB2D.AddForce( new Vector2 (0, 1.5f) * m_JumpForce, ForceMode2D.Impulse);
-                m_IsTouchingFloor = false;
-            }
+            Jump();
         }
 
         if(m_IsDashing)
@@ -102,6 +98,15 @@ public class Player : MonoBehaviour {
             m_PlayerRB2D.gravityScale = 2;
         }
 
+    }
+
+    void Jump()
+    {
+        if (m_IsTouchingFloor)
+        {
+            m_PlayerRB2D.AddForce(new Vector2(0, 1.5f) * m_JumpForce, ForceMode2D.Impulse);
+            m_IsTouchingFloor = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -139,6 +144,8 @@ public class Player : MonoBehaviour {
         }
         else if(collision.collider.CompareTag("EnemyHead"))
         {
+            m_IsTouchingFloor = true;
+            Jump();
             Destroy(collision.gameObject);
         }
     }

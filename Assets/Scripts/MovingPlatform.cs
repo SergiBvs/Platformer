@@ -8,7 +8,6 @@ public class MovingPlatform : MonoBehaviour {
     private Transform currentTarget;
 
     private int targetInt = 0;
-    int children;
     int dir = 1;
 
     // Use this for initialization

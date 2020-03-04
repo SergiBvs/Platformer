@@ -12,6 +12,7 @@ TagManager:
   - Portal
   - BasicEnemy
   - EnemyHead
+  - EnemyBody
   layers:
   - Default
   - TransparentFX
