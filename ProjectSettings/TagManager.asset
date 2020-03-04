@@ -6,6 +6,9 @@ TagManager:
   tags:
   - floor
   - Wall
+  - Ice
+  - JumpPad
+  - DeathZone
   layers:
   - Default
   - TransparentFX

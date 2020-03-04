@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
 
     //OTRAS COSAS
 
-    Rigidbody2D m_PlayerRB2D;
+    public Rigidbody2D m_PlayerRB2D;
     Vector3 DashDestination;
     public GameObject MainCamera; 
 
@@ -120,6 +120,17 @@ public class Player : MonoBehaviour {
             m_IsTouchingFloor = true;
             m_IsOnIce = true;
             HasTouchedFloor = true;
+        }
+        else if (collision.collider.CompareTag("JumpPad"))
+        {
+            HasTouchedFloor = true;
+        }
+        else if (collision.collider.CompareTag("DeathZone"))
+        {
+            m_IsDashing = false;
+            m_PlayerRB2D.gravityScale = 2;
+            print("You're dead lmao, destroy game object and restart level");
+            this.transform.position = new Vector3(0, 4);
         }
     }
 
