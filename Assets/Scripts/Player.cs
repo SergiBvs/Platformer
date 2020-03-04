@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    // MOVIMIENTOS
+    float m_direction;
 
     //FUERZAS QUE AFECTAN AL PERSONAJE
 
@@ -34,49 +36,37 @@ public class Player : MonoBehaviour {
 	
 	void Update ()
     {
-		if(Input.GetAxisRaw("Horizontal") > 0) //Move right
+        //DIRECCION Y MOVIMIENTO
+        if (Input.GetAxisRaw("Horizontal") != 0)
         {
-            m_PlayerRB2D.AddForce(new Vector2(1f, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
-
-            if(m_PlayerRB2D.velocity.x >= 1)
-            {
-                m_PlayerRB2D.velocity = new Vector2(m_PlayerSpeed, m_PlayerRB2D.velocity.y);
-            }
-
-            if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver && HasTouchedFloor) //Dash right
-            {
-                //m_PlayerRB2D.gravityScale = 0;
-                HasTouchedFloor = false;
-                DashCooldownOver = false;
-                m_IsDashing = true;
-                DashDestination = new Vector3 (this.transform.position.x + 5 , this.transform.position.y , 0);
-                StartCoroutine(DashCooldown());
-            }
-        }
-        else if(Input.GetAxisRaw("Horizontal") < 0) //Move Left
-        {
-            m_PlayerRB2D.AddForce(new Vector2(-1, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
-            
-            if(m_PlayerRB2D.velocity.x <= -1)
-            {
-                m_PlayerRB2D.velocity = new Vector2(-m_PlayerSpeed, m_PlayerRB2D.velocity.y);
-            }
-
-            if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver && HasTouchedFloor) //Dash Left
-            {
-                //m_PlayerRB2D.gravityScale = 0;
-                HasTouchedFloor = false;
-                DashCooldownOver = false;
-                StartCoroutine(DashCooldown());
-                m_IsDashing = true;
-                DashDestination = new Vector3(this.transform.position.x - 5, this.transform.position.y, 0);
-            }
-        }
-        else if (!m_IsOnIce)
-        {
-            m_PlayerRB2D.velocity = new Vector3(0, m_PlayerRB2D.velocity.y);
+            m_direction = Input.GetAxisRaw("Horizontal");
         }
 
+        m_PlayerRB2D.AddForce(new Vector2(m_direction, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
+
+        //FRENAR SI NO ESTA EN HIELO
+        if (!m_IsOnIce && Input.GetAxisRaw("Horizontal")==0)
+        {
+            m_direction = 0;
+        }
+
+        //LIMITE DE VELOCIDAD
+        if (Mathf.Abs(m_PlayerRB2D.velocity.x) >= 1)
+        {
+            m_PlayerRB2D.velocity = new Vector2(m_PlayerSpeed*m_direction, m_PlayerRB2D.velocity.y);
+        }
+
+        //DASH
+        if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver && HasTouchedFloor) 
+        {
+            HasTouchedFloor = false;
+            DashCooldownOver = false;
+            m_IsDashing = true;
+            DashDestination = new Vector3(this.transform.position.x + 5*m_direction, this.transform.position.y, 0);
+            StartCoroutine(DashCooldown());
+        }
+
+        //SALTO
         if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             Jump();
@@ -84,15 +74,23 @@ public class Player : MonoBehaviour {
 
         if(m_IsDashing)
         {
-            m_PlayerRB2D.velocity = new Vector2(m_PlayerRB2D.velocity.x, 0);
-            transform.position = Vector3.MoveTowards(this.transform.position, DashDestination, step);
-            if (Vector3.Distance(this.transform.position, DashDestination) <= 0.01f)
-            {
-                m_IsDashing = false;
-                //m_PlayerRB2D.gravityScale = 2;
-            }
+            Dash();
         }
+    }
 
+    void Dash()
+    {
+        //Velocidad en Y a 0 para que no haga cosas raras.
+        m_PlayerRB2D.velocity = new Vector2(m_PlayerRB2D.velocity.x, 0);
+
+        //Mover
+        transform.position = Vector3.MoveTowards(this.transform.position, DashDestination, step);
+
+        //Acabar dash
+        if (Vector3.Distance(this.transform.position, DashDestination) <= 0.005f)
+        {
+            m_IsDashing = false;
+        }
     }
 
     void Jump()
@@ -139,9 +137,12 @@ public class Player : MonoBehaviour {
         }
         else if(collision.collider.CompareTag("EnemyHead"))
         {
+            //REBOTAR
             m_IsTouchingFloor = true;
             HasTouchedFloor = true;
-            Jump(); //rebote.
+            Jump();
+
+            //Eliminar enemigo / Lo que sea.
             Destroy(collision.gameObject);
         }
     }
@@ -156,7 +157,6 @@ public class Player : MonoBehaviour {
         else if (collision.collider.CompareTag("Wall"))
         {
             m_IsDashing = false;
-            m_PlayerRB2D.gravityScale = 2;
         }
         else if (collision.collider.CompareTag("Ice"))
         {
