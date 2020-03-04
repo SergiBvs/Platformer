@@ -50,11 +50,4 @@ public class BasicEnemyMovement : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.CompareTag("PlayerShotExplosion"))
-        {
-            Destroy(gameObject);
-        }
-    }
 }
