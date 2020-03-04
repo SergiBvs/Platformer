@@ -13,6 +13,7 @@ TagManager:
   - BasicEnemy
   - EnemyHead
   - EnemyBody
+  - Coin
   layers:
   - Default
   - TransparentFX

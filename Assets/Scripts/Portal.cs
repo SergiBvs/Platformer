@@ -25,6 +25,7 @@ public class Portal : MonoBehaviour {
             {
                 m_GameManager.m_PortalUsed = true;
                 collision.gameObject.transform.position = m_ConnectedPortal.transform.position;
+                collision.gameObject.GetComponent<Player>().m_PlayerRB2D.AddForce(m_ConnectedPortal.transform.right * 5);
             }
         }
     }
