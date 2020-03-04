@@ -24,7 +24,7 @@ public class PlayerWeapon : MonoBehaviour {
             {
                 m_weaponReady = false;
                 m_shot = (GameObject)Resources.Load("Shot");
-                Instantiate(m_shot, this.transform.position + new Vector3(1,1,0), Quaternion.Euler(0, 0, 0));
+                Instantiate(m_shot, this.transform.position + new Vector3(1,1,0), Quaternion.Euler(0, 0, 45));
                 
                 StartCoroutine(WeaponCooldown());
             }

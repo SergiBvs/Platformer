@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     // MOVIMIENTOS
-    public float m_direction;
+     float m_direction;
+    public float m_lastDirection;
 
     //FUERZAS QUE AFECTAN AL PERSONAJE
 
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour {
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
             m_direction = Input.GetAxisRaw("Horizontal");
+            m_lastDirection = Input.GetAxisRaw("Horizontal");
         }
 
         m_PlayerRB2D.AddForce(new Vector2(m_direction, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
