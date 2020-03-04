@@ -23,22 +23,17 @@ public class Player : MonoBehaviour {
 
     public Rigidbody2D m_PlayerRB2D;
     Vector3 DashDestination;
-    public GameObject MainCamera;
-    
 
 	void Start ()
     {
-        MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         DashCooldownOver = true;
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
-        //MainCamera.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 1);
+        
     }
 	
 	
 	void Update ()
     {
-        //MainCamera.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 1);
-
 		if(Input.GetAxisRaw("Horizontal") > 0) //Move right
         {
             m_PlayerRB2D.AddForce(new Vector2(1f, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
@@ -155,6 +150,7 @@ public class Player : MonoBehaviour {
         if (collision.collider.CompareTag("floor"))
         {
             HasTouchedFloor = true;
+            m_IsTouchingFloor = true;
         }
         else if (collision.collider.CompareTag("Wall"))
         {
