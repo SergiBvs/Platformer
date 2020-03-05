@@ -47,6 +47,7 @@ public class Player : MonoBehaviour {
             m_lastDirection = Input.GetAxisRaw("Horizontal");
         }
 
+        
         m_PlayerRB2D.AddForce(new Vector2(m_direction, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
 
         //FRENAR SI NO ESTA EN HIELO
