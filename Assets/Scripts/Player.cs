@@ -80,6 +80,7 @@ public class Player : MonoBehaviour {
             m_IsDashing = true;
             DashDestination = new Vector3(this.transform.position.x + 5*m_lastDirection, this.transform.position.y, 0);
             StartCoroutine(DashCooldown());
+            m_Knockback = false;
         }
 
         //SALTO

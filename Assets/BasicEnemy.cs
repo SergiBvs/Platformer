@@ -33,6 +33,7 @@ public class BasicEnemy : MonoBehaviour {
         {
             coin = Instantiate((GameObject)Resources.Load("EnemyCoin"), this.transform.position, Quaternion.identity);
             coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(0f, 1f), Random.Range(0.5f, 1.5f)) * coinBurst, ForceMode2D.Impulse);
+            Instantiate(Resources.Load("BasicBurst"), this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
