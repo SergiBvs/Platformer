@@ -162,12 +162,12 @@ public class Player : MonoBehaviour {
                     //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 10), ForceMode2D.Impulse);
                     collision.transform.GetComponentInChildren<BasicEnemyMovement>().GoBack();
                     m_Knockback = true;
-                    m_PlayerRB2D.AddForce(new Vector2(10, 3), ForceMode2D.Impulse);
+                    m_PlayerRB2D.AddForce(new Vector2(20, 3), ForceMode2D.Impulse);
                 }
                 else
                 {
                     m_Knockback = true;
-                    m_PlayerRB2D.AddForce(new Vector2(-10, 3), ForceMode2D.Impulse);
+                    m_PlayerRB2D.AddForce(new Vector2(-20, 3), ForceMode2D.Impulse);
                     collision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
                     //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 10), ForceMode2D.Impulse);
                 }
