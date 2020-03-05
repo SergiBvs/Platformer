@@ -345,8 +345,8 @@ TextureImporter:
       name: GroundSprites_4
       rect:
         serializedVersion: 2
-        x: 192
-        y: 32
+        x: 160
+        y: 0
         width: 32
         height: 32
       alignment: 0
