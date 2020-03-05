@@ -46,8 +46,6 @@ public class BasicEnemyMovement : MonoBehaviour
                 currentTarget = pivots[targetInt];
             }
         }
-
-
     }
 
 }

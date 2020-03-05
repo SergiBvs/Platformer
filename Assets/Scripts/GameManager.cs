@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour {
 	
 	void Update ()
     {
-        m_textCoins.text = "Coins : " + m_Coins;
+        
         HealthSystem();
     }
 
@@ -54,5 +54,10 @@ public class GameManager : MonoBehaviour {
                 m_Hearts[i].enabled = false;
             }
         }
+    }
+
+    public void CoinUpdate()
+    {
+        m_textCoins.text = "Coins : " + m_Coins;
     }
 }
