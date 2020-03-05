@@ -153,7 +153,7 @@ public class Player : MonoBehaviour {
             }
             else //si haces un dash o les saltas en la cabeza mueren
             {
-                Destroy(collision.gameObject);
+                collision.gameObject.GetComponent<BasicEnemy>().BasicEnemyDeath();
             }
         }
         else if(collision.collider.CompareTag("EnemyHead"))
@@ -164,7 +164,7 @@ public class Player : MonoBehaviour {
             Jump();
 
             //Eliminar enemigo / Lo que sea.
-            Destroy(collision.gameObject);
+            collision.transform.parent.gameObject.GetComponent<BasicEnemy>().BasicEnemyDeath();
         }
     }
 

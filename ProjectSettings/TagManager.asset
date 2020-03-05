@@ -15,6 +15,7 @@ TagManager:
   - EnemyBody
   - Coin
   - PlayerShotExplosion
+  - EnemyParent
   layers:
   - Default
   - TransparentFX

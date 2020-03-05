@@ -35,6 +35,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4096941769252772}
   - component: {fileID: 114415419328342178}
+  - component: {fileID: 61973375492172454}
+  - component: {fileID: 114922998566299508}
   m_Layer: 0
   m_Name: EnemyObject
   m_TagString: Untagged
@@ -172,7 +174,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1884298693584938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.18, y: -0.29, z: -0.0022422662}
+  m_LocalPosition: {x: -0.49606037, y: 0.35638928, z: -0.0022422662}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4096941769252772}
@@ -251,7 +253,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0012665987, y: 0}
+  m_Offset: {x: 0.0012666285, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -262,7 +264,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.93160343, y: 1}
+  m_Size: {x: 0.7252391, y: 1}
   m_EdgeRadius: 0
 --- !u!61 &61404995868827686
 BoxCollider2D:
@@ -289,6 +291,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!61 &61973375492172454
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1369689904625660}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &114415419328342178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -306,6 +333,18 @@ MonoBehaviour:
   pivots:
   - {fileID: 4793601918068076}
   - {fileID: 4759450424057608}
+--- !u!114 &114922998566299508
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1369689904625660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45427629a95b82c44aaf5ac66a4508fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinBurst: 5
 --- !u!212 &212471977610203006
 SpriteRenderer:
   m_ObjectHideFlags: 1
