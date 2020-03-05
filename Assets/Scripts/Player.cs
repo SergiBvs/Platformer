@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
      float m_direction;
     public float m_lastDirection;
 
+    int knockbackDirection;
+
     //FUERZAS QUE AFECTAN AL PERSONAJE
 
     public int m_PlayerSpeed;
@@ -43,23 +45,31 @@ public class Player : MonoBehaviour {
         //DIRECCION Y MOVIMIENTO
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
-            m_direction = Input.GetAxisRaw("Horizontal");
             m_lastDirection = Input.GetAxisRaw("Horizontal");
         }
 
-        
-        m_PlayerRB2D.AddForce(new Vector2(m_direction, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
-
-        //FRENAR SI NO ESTA EN HIELO
-        if (!m_IsOnIce && (Input.GetAxisRaw("Horizontal")==0) && (!m_Knockback))
+        m_direction = Input.GetAxisRaw("Horizontal");
+        if(m_direction < 0)
         {
-            m_direction = 0;
+            m_PlayerRB2D.AddForce(new Vector2(-1, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
         }
-
+        else if (m_direction > 0)
+        {
+            m_PlayerRB2D.AddForce(new Vector2(1, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
+        }
+        
         //LIMITE DE VELOCIDAD
         if (Mathf.Abs(m_PlayerRB2D.velocity.x) >= 1)
         {
-            m_PlayerRB2D.velocity = new Vector2(m_PlayerSpeed*m_direction, m_PlayerRB2D.velocity.y);
+            if (m_Knockback)
+            {
+                m_PlayerRB2D.velocity = new Vector2(m_PlayerSpeed * knockbackDirection, m_PlayerRB2D.velocity.y);
+            }
+            else
+            {
+                m_PlayerRB2D.velocity = new Vector2(m_PlayerSpeed * m_direction, m_PlayerRB2D.velocity.y);
+            }
+            
         }
 
         //DASH
@@ -68,7 +78,7 @@ public class Player : MonoBehaviour {
             HasTouchedFloor = false;
             DashCooldownOver = false;
             m_IsDashing = true;
-            DashDestination = new Vector3(this.transform.position.x + 5*m_direction, this.transform.position.y, 0);
+            DashDestination = new Vector3(this.transform.position.x + 5*m_lastDirection, this.transform.position.y, 0);
             StartCoroutine(DashCooldown());
         }
 
@@ -163,12 +173,14 @@ public class Player : MonoBehaviour {
                     //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 10), ForceMode2D.Impulse);
                     collision.transform.GetComponentInChildren<BasicEnemyMovement>().GoBack();
                     m_Knockback = true;
-                    m_PlayerRB2D.AddForce(new Vector2(20, 3), ForceMode2D.Impulse);
+                    knockbackDirection = 1;
+                    m_PlayerRB2D.AddForce(new Vector2(100, 3), ForceMode2D.Impulse);
                 }
                 else
                 {
                     m_Knockback = true;
-                    m_PlayerRB2D.AddForce(new Vector2(-20, 3), ForceMode2D.Impulse);
+                    knockbackDirection = -1;
+                    m_PlayerRB2D.AddForce(new Vector2(100, 3), ForceMode2D.Impulse);
                     collision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
                     //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 10), ForceMode2D.Impulse);
                 }

@@ -113,42 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &95090561 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1884298693584938, guid: be6e9d9f22ec14f4d8be837c60647b58,
-    type: 2}
-  m_PrefabInternal: {fileID: 109381516}
---- !u!114 &95090562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 95090561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e68c34ae7d8177e409555ff432dad527, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!50 &95090563
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 95090561}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 138.27
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 5
 --- !u!1001 &109381516
 Prefab:
   m_ObjectHideFlags: 0
@@ -188,16 +152,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1884298693584938, guid: be6e9d9f22ec14f4d8be837c60647b58, type: 2}
-      propertyPath: m_TagString
-      value: EnemyParent
-      objectReference: {fileID: 0}
-    - target: {fileID: 1369689904625660, guid: be6e9d9f22ec14f4d8be837c60647b58, type: 2}
-      propertyPath: m_TagString
-      value: BasicEnemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 50050652697305444, guid: be6e9d9f22ec14f4d8be837c60647b58, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be6e9d9f22ec14f4d8be837c60647b58, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &114216598
@@ -290,7 +245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &169529920
 RectTransform:
   m_ObjectHideFlags: 0
