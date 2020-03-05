@@ -9,6 +9,7 @@ public class EnemyParentScript : MonoBehaviour {
 
     public void DestroyParent()
     {
+        GetComponentInChildren<BasicEnemy>().BasicEnemyDeath();
         Destroy(this.gameObject);
     }
 }

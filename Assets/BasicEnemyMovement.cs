@@ -48,4 +48,21 @@ public class BasicEnemyMovement : MonoBehaviour
         }
     }
 
+    public void GoBack()
+    {
+        if (targetInt > 0 && dir == 1)
+        {
+            targetInt -= 1;
+        }
+        else if (targetInt > 0 && dir == -1)
+        {
+            targetInt += 1;
+        }
+        else if (targetInt == 0)
+        {
+            targetInt = 1;
+        }
+        currentTarget = pivots[targetInt];
+    }
+
 }

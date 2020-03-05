@@ -22,6 +22,8 @@ public class Player : MonoBehaviour {
     public bool HasTouchedFloor; //per no poder fer dos dashes sense tocar terra 
     public bool m_IsOnIce;
 
+    public bool m_Knockback = false;
+
     //OTRAS COSAS
 
     public Rigidbody2D m_PlayerRB2D;
@@ -48,7 +50,7 @@ public class Player : MonoBehaviour {
         m_PlayerRB2D.AddForce(new Vector2(m_direction, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
 
         //FRENAR SI NO ESTA EN HIELO
-        if (!m_IsOnIce && Input.GetAxisRaw("Horizontal")==0)
+        if (!m_IsOnIce && (Input.GetAxisRaw("Horizontal")==0) && (!m_Knockback))
         {
             m_direction = 0;
         }
@@ -92,6 +94,8 @@ public class Player : MonoBehaviour {
         {
             transform.localScale = new Vector2(1, 1);
         }
+
+        print(m_Knockback);
     }
 
     void Dash()
@@ -120,7 +124,8 @@ public class Player : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.CompareTag("floor"))
+        m_Knockback = false;
+        if (collision.collider.CompareTag("floor"))
         {
             m_IsTouchingFloor = true;
             HasTouchedFloor = true;
@@ -150,10 +155,26 @@ public class Player : MonoBehaviour {
                 {
                     Destroy(this.gameObject);
                 }
+
+                //KNOCKBACK
+                if(collision.transform.position.x < transform.position.x)
+                {
+                    //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 10), ForceMode2D.Impulse);
+                    collision.transform.GetComponentInChildren<BasicEnemyMovement>().GoBack();
+                    m_Knockback = true;
+                    m_PlayerRB2D.AddForce(new Vector2(10, 3), ForceMode2D.Impulse);
+                }
+                else
+                {
+                    m_Knockback = true;
+                    m_PlayerRB2D.AddForce(new Vector2(-10, 3), ForceMode2D.Impulse);
+                    collision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
+                    //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 10), ForceMode2D.Impulse);
+                }
             }
-            else //si haces un dash o les saltas en la cabeza mueren
+            else if(m_IsDashing) //si haces un dash o les saltas en la cabeza mueren
             {
-                collision.gameObject.GetComponent<BasicEnemy>().BasicEnemyDeath();
+                collision.gameObject.GetComponent<EnemyParentScript>().DestroyParent();
             }
         }
         else if(collision.collider.CompareTag("EnemyHead"))
@@ -163,9 +184,11 @@ public class Player : MonoBehaviour {
             HasTouchedFloor = true;
             Jump();
 
-            //Eliminar enemigo / Lo que sea.
-            collision.transform.parent.gameObject.GetComponent<BasicEnemy>().BasicEnemyDeath();
+            //Eliminar enemigo
+            collision.gameObject.GetComponent<EnemyParentScript>().DestroyParent();
         }
+
+        
     }
 
     private void OnCollisionStay2D(Collision2D collision)
