@@ -21,7 +21,6 @@ public class CameraMovement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
         dirX = transform.position.x - m_playerPosition.position.x;
         dirY = transform.position.y - m_playerPosition.position.y;
 

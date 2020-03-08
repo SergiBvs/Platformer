@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
 
     void Start ()
     {
-        m_textCoins.text = "Coins : " + m_Coins;
+        CoinUpdate();
     }
 	
 	void Update ()
@@ -58,6 +58,6 @@ public class GameManager : MonoBehaviour {
 
     public void CoinUpdate()
     {
-        m_textCoins.text = "Coins : " + m_Coins;
+        m_textCoins.text = m_Coins + "x";
     }
 }
