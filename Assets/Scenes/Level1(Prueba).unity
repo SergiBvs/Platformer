@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 126371653}
   - component: {fileID: 126371652}
   - component: {fileID: 126371651}
+  - component: {fileID: 126371655}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -293,6 +294,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &126371655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 126371650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7fb8d44423dce140a6114d016b2d956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinBurst: 5
+  needsCoins: 1
+  minCoins: 2
+  maxCoins: 6
 --- !u!1 &206545353
 GameObject:
   m_ObjectHideFlags: 0

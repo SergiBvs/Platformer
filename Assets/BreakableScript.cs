@@ -29,7 +29,7 @@ public class BreakableScript : MonoBehaviour {
 		print("trigger");
 		if (other.CompareTag("PlayerShotExplosion"))
 		{
-			particleBurst = Instantiate((GameObject)Resources.Load("BasicBurst"), this.transform.position, Quaternion.identity);
+			particleBurst = Instantiate((GameObject)Resources.Load("Particles/BoxBurst"), this.transform.position, Quaternion.identity);
 			if (needsCoins)
 			{
 				int rand = Random.Range(minCoins, maxCoins);
@@ -37,9 +37,9 @@ public class BreakableScript : MonoBehaviour {
 				{
 					coin = Instantiate((GameObject)Resources.Load("EnemyCoin"), this.transform.position, Quaternion.identity);
 					coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(0f, 1f), Random.Range(0.5f, 1.5f)) * coinBurst, ForceMode2D.Impulse);
-					Instantiate(Resources.Load("BasicBurst"), this.transform.position, Quaternion.identity);
-					Destroy(this.gameObject);
+					
 				}
+				Destroy(this.gameObject);
 			}
 		}
 	}

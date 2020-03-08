@@ -47,12 +47,12 @@ public class CameraMovement : MonoBehaviour {
 
         if (DistanceX > 2)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(m_playerPosition.position.x, transform.position.y, transform.position.z), DistanceX/6 * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(m_playerPosition.position.x, transform.position.y, transform.position.z), DistanceX/4 * Time.deltaTime);
         }
 
         if (DistanceY > 2.5)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(m_playerPosition.position.x, m_playerPosition.position.y, transform.position.z), DistanceY/3 * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(m_playerPosition.position.x, m_playerPosition.position.y, transform.position.z), DistanceY/2.5f * Time.deltaTime);
         }
 
 
