@@ -7,6 +7,8 @@ public class BreakableScript : MonoBehaviour {
 	GameObject particleBurst;
 	GameObject coin;
 
+    public bool breakable = true;
+
 	public float coinBurst;
 
 	public bool needsCoins;
@@ -28,18 +30,43 @@ public class BreakableScript : MonoBehaviour {
 	{
 		if (other.CompareTag("PlayerShotExplosion"))
 		{
-			particleBurst = Instantiate((GameObject)Resources.Load("Particles/BoxBurst"), this.transform.position, Quaternion.identity);
-			if (needsCoins)
-			{
-				int rand = Random.Range(minCoins, maxCoins);
-				for (int i = 0; i <= rand; i++)
-				{
-					coin = Instantiate((GameObject)Resources.Load("EnemyCoin"), this.transform.position, Quaternion.identity);
-					coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(0f, 1f), Random.Range(0.5f, 1.5f)) * coinBurst, ForceMode2D.Impulse);
-					
-				}
-				Destroy(this.gameObject);
-			}
+            DestroyBox();
 		}
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("EnemyHead"))
+        {
+            collision.gameObject.GetComponent<EnemyParentScript>().DestroyParent();
+        }
+        else if (collision.collider.CompareTag("Player"))
+        {
+            if (breakable)
+            {
+                if (collision.collider.GetComponent<Player>().m_IsDashing)
+                {
+                    DestroyBox();
+                }
+            }
+        }
+    }
+
+    public void DestroyBox()
+    {
+        particleBurst = Instantiate((GameObject)Resources.Load("Particles/BoxBurst"), this.transform.position, Quaternion.identity);
+        if (needsCoins)
+        {
+            int rand = Random.Range(minCoins, maxCoins);
+            for (int i = 0; i <= rand; i++)
+            {
+                coin = Instantiate((GameObject)Resources.Load("EnemyCoin"), this.transform.position, Quaternion.identity);
+                coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(0.5f, 1f)) * coinBurst, ForceMode2D.Impulse);
+                float randSize = Random.Range(1, 2.5f);
+                coin.transform.localScale = new Vector2(randSize, randSize);
+
+            }
+            Destroy(this.gameObject);
+        }
+    }
 }

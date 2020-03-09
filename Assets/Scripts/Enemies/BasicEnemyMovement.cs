@@ -31,7 +31,14 @@ public class BasicEnemyMovement : MonoBehaviour
         {
             this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, m_EnemySpeed * Time.deltaTime);
 
-            
+            if(currentTarget.position.x < transform.position.x)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else if (currentTarget.position.x > transform.position.x)
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
 
             if (this.transform.position == currentTarget.position)
             {
@@ -75,6 +82,15 @@ public class BasicEnemyMovement : MonoBehaviour
         yield return new WaitForSeconds(3);
         m_EnemyMovement = true;
         this.GetComponent<Animator>().SetTrigger("WALK");
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Box"))
+        {
+            GoBack();
+        }
     }
 
 }
