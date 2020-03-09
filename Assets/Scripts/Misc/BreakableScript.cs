@@ -26,7 +26,6 @@ public class BreakableScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		print("trigger");
 		if (other.CompareTag("PlayerShotExplosion"))
 		{
 			particleBurst = Instantiate((GameObject)Resources.Load("Particles/BoxBurst"), this.transform.position, Quaternion.identity);

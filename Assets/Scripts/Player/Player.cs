@@ -106,8 +106,6 @@ public class Player : MonoBehaviour {
         {
             transform.localScale = new Vector2(1, 1);
         }
-
-        print(m_Knockback);
     }
 
     void Dash()
@@ -137,7 +135,7 @@ public class Player : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         m_Knockback = false;
-        if (collision.collider.CompareTag("floor"))
+        if (collision.collider.CompareTag("floor") || collision.collider.CompareTag("Box"))
         {
             m_IsTouchingFloor = true;
             HasTouchedFloor = true;
