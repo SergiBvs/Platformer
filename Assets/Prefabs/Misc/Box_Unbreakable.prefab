@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212230352312067872}
   - component: {fileID: 50785322459783774}
   - component: {fileID: 61359267158784548}
+  - component: {fileID: 114871415848361290}
   m_Layer: 0
   m_Name: Box_Unbreakable
   m_TagString: Box
@@ -87,6 +88,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114871415848361290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1642204721453662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7fb8d44423dce140a6114d016b2d956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breakable: 0
+  coinBurst: 0
+  needsCoins: 0
+  minCoins: 0
+  maxCoins: 0
 --- !u!212 &212230352312067872
 SpriteRenderer:
   m_ObjectHideFlags: 1

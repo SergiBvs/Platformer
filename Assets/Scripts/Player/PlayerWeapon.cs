@@ -51,7 +51,7 @@ public class PlayerWeapon : MonoBehaviour {
 
     IEnumerator WeaponCooldown()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.5f);
         m_weaponReady = true;
     }
 

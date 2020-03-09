@@ -31,7 +31,7 @@ public class BasicEnemy : MonoBehaviour {
         int rand = Random.Range(1, 5);
         for (int i = 0; i < rand; i++)
         {
-            coin = Instantiate((GameObject)Resources.Load("EnemyCoin"), this.transform.position, Quaternion.identity);
+            coin = Instantiate((GameObject)Resources.Load("EnemyCoin"), this.transform.position, Quaternion.Euler(0,0,Random.Range(0,90)));
             coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(0f, 1f), Random.Range(0.5f, 1.5f)) * coinBurst, ForceMode2D.Impulse);
 
         }
