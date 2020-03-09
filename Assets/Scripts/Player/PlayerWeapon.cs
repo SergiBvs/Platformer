@@ -36,6 +36,17 @@ public class PlayerWeapon : MonoBehaviour {
 
         // Rotate Object
         this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
+
+        float mouse = transform.position.x - mousePos.x;
+
+        if (mouse > 0.1f)
+        {
+            transform.localScale = new Vector2(-1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector2(1, 1);
+        }
     }
 
     IEnumerator WeaponCooldown()

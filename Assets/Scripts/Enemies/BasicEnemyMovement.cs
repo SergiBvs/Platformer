@@ -29,7 +29,9 @@ public class BasicEnemyMovement : MonoBehaviour
     {
         if (m_EnemyMovement)
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, 0.1f);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, m_EnemySpeed * Time.deltaTime);
+
+            
 
             if (this.transform.position == currentTarget.position)
             {
@@ -44,6 +46,9 @@ public class BasicEnemyMovement : MonoBehaviour
 
                 targetInt += dir;
                 currentTarget = pivots[targetInt];
+                m_EnemyMovement = false;
+                this.GetComponent<Animator>().SetTrigger("IDLE");
+                StartCoroutine(WaitTime());
             }
         }
     }
@@ -63,6 +68,13 @@ public class BasicEnemyMovement : MonoBehaviour
             targetInt = 1;
         }
         currentTarget = pivots[targetInt];
+    }
+
+    IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(3);
+        m_EnemyMovement = true;
+        this.GetComponent<Animator>().SetTrigger("WALK");
     }
 
 }
