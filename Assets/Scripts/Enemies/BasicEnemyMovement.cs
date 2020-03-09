@@ -29,7 +29,7 @@ public class BasicEnemyMovement : MonoBehaviour
     {
         if (m_EnemyMovement)
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, 0.1f);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, m_EnemySpeed * Time.deltaTime);
 
             if (this.transform.position == currentTarget.position)
             {
