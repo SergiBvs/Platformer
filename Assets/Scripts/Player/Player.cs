@@ -166,6 +166,7 @@ public class Player : MonoBehaviour {
                 if(m_GameManager.m_Health <= 0)
                 {
                     Destroy(this.gameObject);
+                    m_GameManager.m_GameOverPanel.SetActive(true);
                 }
 
                 //KNOCKBACK

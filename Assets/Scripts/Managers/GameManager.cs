@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     [HideInInspector] public bool m_PortalUsed;
     public TextMeshProUGUI m_textCoins;
@@ -16,14 +17,15 @@ public class GameManager : MonoBehaviour {
     public Sprite FullHeart;
     public Sprite EmptyHeart;
 
-    void Start ()
+    public GameObject m_GameOverPanel;
+    
+    void Start()
     {
         CoinUpdate();
     }
-	
-	void Update ()
+
+    void Update()
     {
-        
         HealthSystem();
     }
 
@@ -60,4 +62,10 @@ public class GameManager : MonoBehaviour {
     {
         m_textCoins.text = m_Coins + "x";
     }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 }

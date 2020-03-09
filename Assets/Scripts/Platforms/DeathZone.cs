@@ -27,6 +27,8 @@ public class DeathZone : MonoBehaviour {
             }
             else
             {
+                Destroy(collision.gameObject);
+                m_GameManager.m_GameOverPanel.SetActive(true);
                 //pon la pantalla de muerte
             }
 
