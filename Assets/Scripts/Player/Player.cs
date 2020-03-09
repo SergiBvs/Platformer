@@ -24,6 +24,8 @@ public class Player : MonoBehaviour {
     public bool HasTouchedFloor; //per no poder fer dos dashes sense tocar terra 
     public bool m_IsOnIce;
 
+    float iceSpeed = 9;
+
     public bool m_Knockback = false;
 
     //OTRAS COSAS
@@ -46,6 +48,7 @@ public class Player : MonoBehaviour {
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
             m_lastDirection = Input.GetAxisRaw("Horizontal");
+            if(iceSpeed < 9) iceSpeed += .2f;
         }
 
         m_direction = Input.GetAxisRaw("Horizontal");
@@ -57,6 +60,11 @@ public class Player : MonoBehaviour {
         {
             m_PlayerRB2D.AddForce(new Vector2(1, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
         }
+        //else if (m_direction == 0)
+        //{
+
+        //    m_PlayerRB2D.AddForce(new Vector2(m_lastDirection, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
+        //}
         
         //LIMITE DE VELOCIDAD
         if (Mathf.Abs(m_PlayerRB2D.velocity.x) >= 1)
@@ -65,11 +73,20 @@ public class Player : MonoBehaviour {
             {
                 m_PlayerRB2D.velocity = new Vector2(m_PlayerSpeed * knockbackDirection, m_PlayerRB2D.velocity.y);
             }
-            else
+            else if (!m_IsOnIce)
             {
                 m_PlayerRB2D.velocity = new Vector2(m_PlayerSpeed * m_direction, m_PlayerRB2D.velocity.y);
+                iceSpeed = 9;
             }
-            
+            else if (m_IsOnIce && m_direction == 0)
+            {
+                m_PlayerRB2D.velocity = new Vector2(m_lastDirection * iceSpeed, m_PlayerRB2D.velocity.y);
+                if (iceSpeed <= -0.1 && iceSpeed >= 0.1) iceSpeed -= .2f;
+                else iceSpeed = 0;
+
+            }
+
+
         }
 
         //DASH
