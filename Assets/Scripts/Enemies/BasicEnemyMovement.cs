@@ -17,12 +17,16 @@ public class BasicEnemyMovement : MonoBehaviour
     private int targetInt = 0;
     int dir = 1;
 
+    public bool m_ObjectFlipped;
+
+    //public float EnemyLocalScaleY;
+
     void Start()
     {
-
         currentTarget = pivots[0];
         m_EnemyMovement = true;
         m_EnemyRB2D = GameObject.FindGameObjectWithTag("BasicEnemy").GetComponent<Rigidbody2D>();
+        //EnemyLocalScaleY = this.transform.localScale.y;
     }
 
     void Update()
@@ -31,13 +35,25 @@ public class BasicEnemyMovement : MonoBehaviour
         {
             this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, m_EnemySpeed * Time.deltaTime);
 
-            if(currentTarget.position.x < transform.position.x)
+            if(currentTarget.position.x < transform.position.x) // left
             {
-                GetComponent<SpriteRenderer>().flipX = true;
+                if(!m_ObjectFlipped)
+                {
+                    //EnemyLocalScaleY = -EnemyLocalScaleY;
+                    this.transform.localScale = new Vector3 (-this.transform.localScale.x , this.transform.localScale.y , this.transform.localScale.z);
+                    m_ObjectFlipped = true;
+                }
+                //GetComponent<SpriteRenderer>().flipX = true;
             }
-            else if (currentTarget.position.x > transform.position.x)
+            else if (currentTarget.position.x > transform.position.x) //right
             {
-                GetComponent<SpriteRenderer>().flipX = false;
+                if(m_ObjectFlipped)
+                {
+                    //EnemyLocalScaleY = -EnemyLocalScaleY;
+                    this.transform.localScale = new Vector3(-this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z);
+                    m_ObjectFlipped = false;
+                }
+                //GetComponent<SpriteRenderer>().flipX = false;
             }
 
             if (this.transform.position == currentTarget.position)
