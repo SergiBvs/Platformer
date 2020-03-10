@@ -6,7 +6,7 @@ public class BasicEnemyMovement : MonoBehaviour
 {
 
     public bool m_EnemyMovement;
-    public int m_EnemySpeed;
+    public float m_EnemySpeed = 2;
     public Rigidbody2D m_EnemyRB2D;
 
 
@@ -33,11 +33,11 @@ public class BasicEnemyMovement : MonoBehaviour
 
             if(currentTarget.position.x < transform.position.x)
             {
-                GetComponent<SpriteRenderer>().flipX = true;
+                GetComponent<SpriteRenderer>().flipX = false;
             }
             else if (currentTarget.position.x > transform.position.x)
             {
-                GetComponent<SpriteRenderer>().flipX = false;
+                GetComponent<SpriteRenderer>().flipX = true;
             }
 
             if (this.transform.position == currentTarget.position)
