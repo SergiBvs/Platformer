@@ -245,10 +245,10 @@ public class Player : MonoBehaviour {
         }
         else if (collision.collider.CompareTag("Shield"))
         {
-            m_HasExitedCollision = false;
+            //m_HasExitedCollision = false;
             m_IsDashing = false;
-            if(!m_HasRecievedDamage)
-            StartCoroutine(RecievingDamageCD(collision));
+            //if(!m_HasRecievedDamage)
+            //StartCoroutine(RecievingDamageCD(collision));
         }
     }
 
@@ -276,7 +276,7 @@ public class Player : MonoBehaviour {
             m_GameManager.m_IsDashAvaliable = true;
     }
 
-    public IEnumerator RecievingDamageCD(Collision2D colision)
+    /*public IEnumerator RecievingDamageCD(Collision2D colision)
     {
         if (!m_HasExitedCollision)
         {
@@ -285,7 +285,7 @@ public class Player : MonoBehaviour {
             RecievingDamage(colision);
             m_HasRecievedDamage = false;
         }
-    }
+    }*/
 
 
     public void RecievingDamage(Collision2D colision)
