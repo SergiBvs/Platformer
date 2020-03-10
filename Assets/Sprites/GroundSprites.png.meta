@@ -18,6 +18,8 @@ TextureImporter:
     21300026: GroundSprites_6
     21300028: GroundSprites_7
     21300030: GroundSprites_8
+    21300032: GroundSprites_9
+    21300034: GroundSprites_10
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -437,6 +439,46 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 24c7963145f08ad41ba4ff4a52c99bc9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundSprites_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 436584abd0595cb4f9935a956f009133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundSprites_10
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1246bb4765a3514cb89f13306b3368c
       vertices: []
       indices: 
       edges: []
