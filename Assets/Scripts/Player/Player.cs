@@ -94,8 +94,6 @@ public class Player : MonoBehaviour {
             }
         }
 
-        print(iceSpeed);
-
         //DASH
         if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver && HasTouchedFloor) 
         {

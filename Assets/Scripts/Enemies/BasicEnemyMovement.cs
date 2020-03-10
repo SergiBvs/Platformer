@@ -33,11 +33,11 @@ public class BasicEnemyMovement : MonoBehaviour
 
             if(currentTarget.position.x < transform.position.x)
             {
-                GetComponent<SpriteRenderer>().flipX = false;
+                GetComponent<SpriteRenderer>().flipX = true;
             }
             else if (currentTarget.position.x > transform.position.x)
             {
-                GetComponent<SpriteRenderer>().flipX = true;
+                GetComponent<SpriteRenderer>().flipX = false;
             }
 
             if (this.transform.position == currentTarget.position)
