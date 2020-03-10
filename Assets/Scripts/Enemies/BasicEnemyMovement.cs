@@ -54,7 +54,7 @@ public class BasicEnemyMovement : MonoBehaviour
                 targetInt += dir;
                 currentTarget = pivots[targetInt];
                 m_EnemyMovement = false;
-                this.GetComponent<Animator>().SetTrigger("IDLE");
+                //this.GetComponent<Animator>().SetTrigger("IDLE");
                 StartCoroutine(WaitTime());
             }
         }
@@ -81,7 +81,7 @@ public class BasicEnemyMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         m_EnemyMovement = true;
-        this.GetComponent<Animator>().SetTrigger("WALK");
+        //this.GetComponent<Animator>().SetTrigger("WALK");
     }
 
 

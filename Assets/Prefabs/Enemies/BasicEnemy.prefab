@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4793601918068076}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Pivot 1
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114922998566299508}
   - component: {fileID: 212814444467451744}
   - component: {fileID: 95457723849059306}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EnemyObject
   m_TagString: BasicEnemy
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4759450424057608}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Pivot 2
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 4118634012020420}
   - component: {fileID: 212471977610203006}
   - component: {fileID: 61293007154419606}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Head
   m_TagString: EnemyHead
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4027872604889332}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EnemyPivots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4297931176171204}
   - component: {fileID: 50511409041573318}
   - component: {fileID: 114157797288012064}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BasicEnemy
   m_TagString: EnemyParent
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 4970262063938230}
   - component: {fileID: 212518977781648516}
   - component: {fileID: 61404995868827686}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Body
   m_TagString: EnemyBody
   m_Icon: {fileID: 0}

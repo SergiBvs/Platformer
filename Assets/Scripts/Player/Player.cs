@@ -23,6 +23,8 @@ public class Player : MonoBehaviour {
     public bool DashCooldownOver;
     public bool HasTouchedFloor; //per no poder fer dos dashes sense tocar terra 
     public bool m_IsOnIce;
+    public bool m_HasRecievedDamage = false;
+    public bool m_HasExitedCollision;
 
     float iceSpeed = .4f;
 
@@ -180,38 +182,12 @@ public class Player : MonoBehaviour {
         }
         else if (collision.collider.CompareTag("EnemyBody"))
         {
-            if (!m_IsDashing)
-            {
-                m_GameManager.m_Health--;
-
-                if (m_GameManager.m_Health <= 0)
-                {
-                    Destroy(this.gameObject);
-                    m_GameManager.m_GameOverPanel.SetActive(true);
-                }
-
-                //KNOCKBACK
-                if (collision.transform.position.x < transform.position.x)
-                {
-                    //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 10), ForceMode2D.Impulse);
-                    collision.transform.GetComponentInChildren<BasicEnemyMovement>().GoBack();
-                    m_Knockback = true;
-                    knockbackDirection = 1;
-                    m_PlayerRB2D.AddForce(new Vector2(100, 3), ForceMode2D.Impulse);
-                }
-                else
-                {
-                    m_Knockback = true;
-                    knockbackDirection = -1;
-                    m_PlayerRB2D.AddForce(new Vector2(100, 3), ForceMode2D.Impulse);
-                    collision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
-                    //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 10), ForceMode2D.Impulse);
-                }
-            }
-            else if (m_IsDashing) //si haces un dash o les saltas en la cabeza mueren
-            {
-                collision.gameObject.GetComponent<EnemyParentScript>().DestroyParent();
-            }
+            RecievingDamage(collision);
+        }
+        else if (collision.collider.CompareTag("Shield"))
+        {
+            m_IsDashing = false;
+            RecievingDamage(collision);
         }
         else if (collision.collider.CompareTag("EnemyHead"))
         {
@@ -267,6 +243,13 @@ public class Player : MonoBehaviour {
             m_IsOnIce = true;
             HasTouchedFloor = true;
         }
+        else if (collision.collider.CompareTag("Shield"))
+        {
+            m_HasExitedCollision = false;
+            m_IsDashing = false;
+            if(!m_HasRecievedDamage)
+            StartCoroutine(RecievingDamageCD(collision));
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -280,12 +263,66 @@ public class Player : MonoBehaviour {
             m_IsTouchingFloor = false;
             m_IsOnIce = false;
         }
+        else if(collision.collider.CompareTag("Shield"))
+        {
+            m_HasExitedCollision = true;
+        }
     }
 
     public IEnumerator DashCooldown()
     {
-        yield return new WaitForSeconds(0.5f);
-        DashCooldownOver = true;
-        m_GameManager.m_IsDashAvaliable = true;
+            yield return new WaitForSeconds(0.5f);
+            DashCooldownOver = true;
+            m_GameManager.m_IsDashAvaliable = true;
     }
+
+    public IEnumerator RecievingDamageCD(Collision2D colision)
+    {
+        if (!m_HasExitedCollision)
+        {
+            m_HasRecievedDamage = true;
+            yield return new WaitForSeconds(5f);
+            RecievingDamage(colision);
+            m_HasRecievedDamage = false;
+        }
+    }
+
+
+    public void RecievingDamage(Collision2D colision)
+    {
+        if (!m_IsDashing)
+        {
+            m_GameManager.m_Health--;
+
+            if (m_GameManager.m_Health <= 0)
+            {
+                Destroy(this.gameObject);
+                m_GameManager.m_GameOverPanel.SetActive(true);
+            }
+
+            //KNOCKBACK
+            if (colision.transform.position.x < transform.position.x)
+            {
+                //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 10), ForceMode2D.Impulse);
+                colision.transform.GetComponentInChildren<BasicEnemyMovement>().GoBack();
+                m_Knockback = true;
+                knockbackDirection = 1;
+                m_PlayerRB2D.AddForce(new Vector2(100, 3), ForceMode2D.Impulse);
+            }
+            else
+            {
+                m_Knockback = true;
+                knockbackDirection = -1;
+                m_PlayerRB2D.AddForce(new Vector2(100, 3), ForceMode2D.Impulse);
+                colision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
+                //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 10), ForceMode2D.Impulse);
+            }
+        }
+        else if (m_IsDashing) //si haces un dash o les saltas en la cabeza mueren
+        {
+            colision.gameObject.GetComponent<EnemyParentScript>().DestroyParent();
+        }
+    }
+
 }
+
