@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50785322459783774}
   - component: {fileID: 61359267158784548}
   - component: {fileID: 114871415848361290}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Box_Unbreakable
   m_TagString: Box
   m_Icon: {fileID: 0}
