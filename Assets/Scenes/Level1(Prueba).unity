@@ -6672,7 +6672,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4710442190663706, guid: cfc253e44d09be44ab5db6655773cef4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 8.39
+      value: 12.25
       objectReference: {fileID: 0}
     - target: {fileID: 4710442190663706, guid: cfc253e44d09be44ab5db6655773cef4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6697,18 +6697,6 @@ Prefab:
     - target: {fileID: 4710442190663706, guid: cfc253e44d09be44ab5db6655773cef4, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1560926370010784, guid: cfc253e44d09be44ab5db6655773cef4, type: 2}
-      propertyPath: m_Name
-      value: BluePortal
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582340130105586, guid: cfc253e44d09be44ab5db6655773cef4, type: 2}
-      propertyPath: m_Name
-      value: OrangePortal
-      objectReference: {fileID: 0}
-    - target: {fileID: 4486907301561548, guid: cfc253e44d09be44ab5db6655773cef4, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.87
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfc253e44d09be44ab5db6655773cef4, type: 2}
@@ -8044,7 +8032,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1632818442
 RectTransform:
   m_ObjectHideFlags: 0
