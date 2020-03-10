@@ -17,16 +17,24 @@ public class GameManager : MonoBehaviour
     public Sprite FullHeart;
     public Sprite EmptyHeart;
 
+    public Sprite DashAvaliable;
+    public Sprite DashUnavaliable;
+    public Image DashIndicatorIMG;
+    public bool m_IsDashAvaliable;
+
+
     public GameObject m_GameOverPanel;
     
     void Start()
     {
+        m_IsDashAvaliable = true;
         CoinUpdate();
     }
 
     void Update()
     {
         HealthSystem();
+        DashIndicator();
     }
 
     public void HealthSystem()
@@ -55,6 +63,18 @@ public class GameManager : MonoBehaviour
             {
                 m_Hearts[i].enabled = false;
             }
+        }
+    }
+
+    public void DashIndicator()
+    {
+        if (m_IsDashAvaliable)
+        {
+            DashIndicatorIMG.sprite = DashAvaliable;
+        }
+        else
+        {
+            DashIndicatorIMG.sprite = DashUnavaliable;
         }
     }
 
