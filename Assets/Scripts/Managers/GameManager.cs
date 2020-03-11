@@ -24,17 +24,7 @@ public class GameManager : MonoBehaviour
 
 
     public GameObject m_GameOverPanel;
-
-    private static GameManager instance;
-
-    public static GameManager GetInstance()
-    {
-        if(instance == null)
-        {
-            instance = new GameManager();
-        }
-        return instance;
-    }
+    
     void Start()
     {
         m_IsDashAvaliable = true;
