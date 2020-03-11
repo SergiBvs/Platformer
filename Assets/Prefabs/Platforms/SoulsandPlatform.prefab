@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212381853776481118}
   - component: {fileID: 61359291343628044}
   - component: {fileID: 114934399799773698}
+  - component: {fileID: 114071272541643956}
   m_Layer: 0
   m_Name: SoulsandPlatform
   m_TagString: floor
@@ -123,6 +124,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114071272541643956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424632012893214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7815455086aae4b94538e0070c2895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114934399799773698
 MonoBehaviour:
   m_ObjectHideFlags: 1

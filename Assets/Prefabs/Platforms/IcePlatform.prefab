@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4676641017755808}
   - component: {fileID: 212219649027491088}
   - component: {fileID: 61440900871261596}
+  - component: {fileID: 114585649782175140}
   m_Layer: 0
   m_Name: COlliderNormal
   m_TagString: Wall
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 4970024727005690}
   - component: {fileID: 212775023364377722}
   - component: {fileID: 61668192637732880}
+  - component: {fileID: 114205381676651066}
   m_Layer: 0
   m_Name: IcePlatform
   m_TagString: Ice
@@ -122,6 +124,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114205381676651066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1752419913058848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7815455086aae4b94538e0070c2895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114585649782175140
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238570017542038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7815455086aae4b94538e0070c2895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212219649027491088
 SpriteRenderer:
   m_ObjectHideFlags: 1
