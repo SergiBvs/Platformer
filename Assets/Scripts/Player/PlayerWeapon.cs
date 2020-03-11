@@ -9,11 +9,14 @@ public class PlayerWeapon : MonoBehaviour {
 
     public GameObject gunTip;
 
+    public GameObject m_Player;
+
     bool m_weaponReady = true;
-    
+    Vector2 mousePos;
+
     // Use this for initialization
-	void Start () {
-		
+    void Start () {
+       
 	}
 	
 	// Update is called once per frame
@@ -24,12 +27,13 @@ public class PlayerWeapon : MonoBehaviour {
             {
                 m_weaponReady = false;
                 m_shot = Instantiate((GameObject)Resources.Load("Shot"), gunTip.transform.position, gunTip.transform.rotation);
-                m_shot.GetComponent<Rigidbody2D>().velocity = gunTip.transform.right * 7f; 
+                m_shot.GetComponent<Rigidbody2D>().velocity = gunTip.transform.right * 7f;
+                m_Player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-mousePos.x, -mousePos.y).normalized * 10, ForceMode2D.Impulse);
                 //Instantiate(m_shot, this.transform.position, transform.rotation);      
                 StartCoroutine(WeaponCooldown());
             }
         }
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         float AngleRad = Mathf.Atan2(mousePos.y - transform.position.y,mousePos.x - transform.position.x);
         float AngleDeg = (180 / Mathf.PI) * AngleRad;

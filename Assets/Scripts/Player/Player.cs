@@ -5,8 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     // MOVIMIENTOS
-     float m_direction;
-    public float m_lastDirection;
+    float m_direction;
+    [HideInInspector] public float m_lastDirection;
 
     int knockbackDirection;
 
@@ -18,47 +18,47 @@ public class Player : MonoBehaviour {
 
     //COMPROBACIONES DE COSAS
 
-    public bool m_IsTouchingFloor;
-    public bool m_IsDashing;
-    public bool DashCooldownOver;
-    public bool HasTouchedFloor; //per no poder fer dos dashes sense tocar terra 
-    public bool m_IsOnIce;
-    public bool m_HasRecievedDamage = false;
-    public bool m_HasExitedCollision;
+    [HideInInspector] public bool m_IsTouchingFloor;
+    [HideInInspector] public bool m_IsDashing;
+    [HideInInspector] public bool DashCooldownOver;
+    [HideInInspector] public bool HasTouchedFloor; //per no poder fer dos dashes sense tocar terra 
+    [HideInInspector] public bool m_IsOnIce;
+    [HideInInspector] public bool m_HasRecievedDamage = false;
+    [HideInInspector]public bool m_HasExitedCollision;
 
     float iceSpeed = .4f;
 
-    public bool m_Knockback = false;
+    [HideInInspector] public bool m_Knockback = false;
 
     //OTRAS COSAS
 
     public Rigidbody2D m_PlayerRB2D;
     Vector3 DashDestination;
     private GameManager m_GameManager;
+    private ParticleSystem.MainModule feetParticles;
+
+    public bool addforce = false;
 
 	void Start ()
     {
         DashCooldownOver = true;
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
         m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        feetParticles = GetComponentInChildren<ParticleSystem>().main;
     }
 	
 	
 	void Update ()
     {
-        //DIRECCION Y MOVIMIENTO
+        //DIRECCION
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
             m_lastDirection = Input.GetAxisRaw("Horizontal");
-            
         }
-
-        
-
         m_direction = Input.GetAxisRaw("Horizontal");
 
-        
 
+        //MOVIMIENTO
         if (!m_IsOnIce)
         {
             if (m_direction < 0)
@@ -83,17 +83,22 @@ public class Player : MonoBehaviour {
         }
         
         //LIMITE DE VELOCIDAD
-        if (Mathf.Abs(m_PlayerRB2D.velocity.x) >= 1)
+        if (Mathf.Abs(m_PlayerRB2D.velocity.x) >= 0 && m_direction!=0)
         {
-            if (m_Knockback)
-            {
-                m_PlayerRB2D.velocity = new Vector2(m_PlayerSpeed * knockbackDirection, m_PlayerRB2D.velocity.y);
-            }
-            else if (!m_IsOnIce)
+            //if (m_Knockback)
+            //{
+            //    m_PlayerRB2D.velocity = new Vector2(m_PlayerSpeed * knockbackDirection, m_PlayerRB2D.velocity.y);
+            //}
+            /*else*/ if (!m_IsOnIce && !addforce)
             {
                 m_PlayerRB2D.velocity = new Vector2(m_PlayerSpeed * m_direction, m_PlayerRB2D.velocity.y);
                 iceSpeed = .4f;
             }
+        }
+
+        if(m_direction == 0 && !addforce)
+        {
+            m_PlayerRB2D.velocity = new Vector2(0, m_PlayerRB2D.velocity.y);
         }
 
         //DASH
@@ -119,7 +124,7 @@ public class Player : MonoBehaviour {
             Dash();
         }
 
-        //GIRAR
+        //GIRAR hacia el ratón
         Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float mousePos = transform.position.x - mouse.x;
         
@@ -148,7 +153,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    void Jump()
+    public void Jump()
     {
         if (m_IsTouchingFloor)
         {
@@ -159,11 +164,13 @@ public class Player : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        m_Knockback = false;
+        
         if (collision.collider.CompareTag("floor"))
         {
             m_IsTouchingFloor = true;
             HasTouchedFloor = true;
+            GetComponentInChildren<ParticleSystem>().Play();
+            feetParticles.startColor = new Color(145 / 255f, 207 / 255f, 87 / 255f, 1);
         }
         else if (collision.collider.CompareTag("Wall"))
         {
@@ -175,6 +182,8 @@ public class Player : MonoBehaviour {
             m_IsTouchingFloor = true;
             m_IsOnIce = true;
             HasTouchedFloor = true;
+            GetComponentInChildren<ParticleSystem>().Play();
+            feetParticles.startColor = new Color(93 / 255f, 200 / 255f, 220 / 255f, 1);
         }
         else if (collision.collider.CompareTag("JumpPad"))
         {
@@ -256,12 +265,14 @@ public class Player : MonoBehaviour {
     {
         if (collision.collider.CompareTag("floor"))
         {
-            m_IsTouchingFloor = false; 
+            m_IsTouchingFloor = false;
+            GetComponentInChildren<ParticleSystem>().Stop();
         }
         else if (collision.collider.CompareTag("Ice"))
         {
             m_IsTouchingFloor = false;
             m_IsOnIce = false;
+            GetComponentInChildren<ParticleSystem>().Stop();
         }
         else if(collision.collider.CompareTag("Shield"))
         {
@@ -303,25 +314,30 @@ public class Player : MonoBehaviour {
             //KNOCKBACK
             if (colision.transform.position.x < transform.position.x)
             {
-                //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 10), ForceMode2D.Impulse);
+                
                 colision.transform.GetComponentInChildren<BasicEnemyMovement>().GoBack();
-                m_Knockback = true;
-                knockbackDirection = 1;
-                m_PlayerRB2D.AddForce(new Vector2(100, 3), ForceMode2D.Impulse);
+                addforce = true;
+                m_PlayerRB2D.AddForce(new Vector2(100, 20), ForceMode2D.Impulse);
+                StartCoroutine(KnockbackTime());
             }
             else
             {
-                m_Knockback = true;
-                knockbackDirection = -1;
-                m_PlayerRB2D.AddForce(new Vector2(100, 3), ForceMode2D.Impulse);
+                addforce = true;
+                m_PlayerRB2D.AddForce(new Vector2(-100, 20), ForceMode2D.Impulse);
                 colision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
-                //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 10), ForceMode2D.Impulse);
+                StartCoroutine(KnockbackTime());
             }
         }
         else if (m_IsDashing) //si haces un dash o les saltas en la cabeza mueren
         {
             colision.gameObject.GetComponent<EnemyParentScript>().DestroyParent();
         }
+    }
+
+    IEnumerator KnockbackTime()
+    {
+        yield return new WaitForSeconds(1);
+        addforce = false;
     }
 
 }
