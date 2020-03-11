@@ -228,8 +228,11 @@ MonoBehaviour:
   DashCooldownOver: 0
   HasTouchedFloor: 0
   m_IsOnIce: 0
+  m_HasRecievedDamage: 0
+  m_HasExitedCollision: 0
   m_Knockback: 0
   m_PlayerRB2D: {fileID: 0}
+  addforce: 0
 --- !u!114 &114733038808927816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,6 +247,7 @@ MonoBehaviour:
   m_ammo: 3
   m_shot: {fileID: 0}
   gunTip: {fileID: 1491887127722874}
+  m_Player: {fileID: 1095136870356872}
 --- !u!198 &198301471773832912
 ParticleSystem:
   m_ObjectHideFlags: 1

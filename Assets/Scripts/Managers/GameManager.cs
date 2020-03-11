@@ -10,9 +10,9 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public bool m_PortalUsed;
     public TextMeshProUGUI m_textCoins;
-    public int m_Coins;
-    public int m_Health;
-    public int m_nOfHearts;
+    [HideInInspector] public int m_Coins;
+    [HideInInspector] public int m_Health;
+    [HideInInspector] public int m_nOfHearts;
     public Image[] m_Hearts;
     public Sprite FullHeart;
     public Sprite EmptyHeart;
@@ -20,10 +20,12 @@ public class GameManager : MonoBehaviour
     public Sprite DashAvaliable;
     public Sprite DashUnavaliable;
     public Image DashIndicatorIMG;
-    public bool m_IsDashAvaliable;
+    [HideInInspector] public bool m_IsDashAvaliable;
 
 
     public GameObject m_GameOverPanel;
+    public Animator m_Telon;
+
     
     void Start()
     {
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            RestartLevel();
         }
     }
 
@@ -90,7 +92,20 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        m_Telon.SetTrigger("Telon");
+        StartCoroutine(TelonWait(SceneManager.GetActiveScene().buildIndex));
+    }
+
+    public void NextScene()
+    {
+        m_Telon.SetTrigger("Telon");
+        StartCoroutine(TelonWait(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+
+    public IEnumerator TelonWait(int sceneToGo)
+    {
+        yield return new WaitForSeconds(1.3f);
+        SceneManager.LoadScene(sceneToGo);
     }
 
 }

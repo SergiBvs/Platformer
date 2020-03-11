@@ -175,7 +175,14 @@ public class Player : MonoBehaviour {
             m_IsTouchingFloor = true;
             HasTouchedFloor = true;
             GetComponentInChildren<ParticleSystem>().Play();
-            feetParticles.startColor = new Color(145 / 255f, 207 / 255f, 87 / 255f, 1);
+            if (collision.collider.name == "SoulsandPlatform")
+            {
+                feetParticles.startColor = new Color(61 / 255f, 52 / 255f, 69 / 255f, 1);
+            }
+            else
+            {
+                feetParticles.startColor = new Color(145 / 255f, 207 / 255f, 87 / 255f, 1);
+            }
         }
         else if (collision.collider.CompareTag("Wall"))
         {
@@ -236,6 +243,7 @@ public class Player : MonoBehaviour {
                 HasTouchedFloor = true;
             }
         }
+        
 
 
     }
@@ -282,6 +290,15 @@ public class Player : MonoBehaviour {
         else if(collision.collider.CompareTag("Shield"))
         {
             m_HasExitedCollision = true;
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Final"))
+        {
+            m_GameManager.NextScene();
         }
     }
 

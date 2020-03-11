@@ -20,6 +20,7 @@ TagManager:
   - Shield
   - ShieldEnemyBody
   - Final
+  - Telon
   layers:
   - Default
   - TransparentFX
