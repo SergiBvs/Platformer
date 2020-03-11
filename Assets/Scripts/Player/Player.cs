@@ -99,7 +99,7 @@ public class Player : MonoBehaviour {
             }
         }
 
-        if(m_direction == 0 && !addforce)
+        if(!m_IsOnIce && m_direction == 0 && !addforce)
         {
             m_PlayerRB2D.velocity = new Vector2(0, m_PlayerRB2D.velocity.y);
         }
