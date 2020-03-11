@@ -174,7 +174,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1048450297569594, guid: 8f67ea2c60cb48249a5d30c26beb3386, type: 2}
       propertyPath: m_Name
-      value: TECLA
+      value: TECLA ->
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f67ea2c60cb48249a5d30c26beb3386, type: 2}
@@ -246,6 +246,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &251987885 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95191718114690766, guid: 8f67ea2c60cb48249a5d30c26beb3386,
+    type: 2}
+  m_PrefabInternal: {fileID: 72790872}
 --- !u!4 &263440331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4295919809219530, guid: 3010ce1c5945607408e34d55f6b46c31,
@@ -428,6 +433,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &815643158 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95191718114690766, guid: 8f67ea2c60cb48249a5d30c26beb3386,
+    type: 2}
+  m_PrefabInternal: {fileID: 1999156239}
 --- !u!4 &911116204 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4903899382255904, guid: d52bbe84ffe6d8f4cbcce832c5986220,
@@ -494,7 +504,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1048450297569594, guid: 8f67ea2c60cb48249a5d30c26beb3386, type: 2}
       propertyPath: m_Name
-      value: TECLA (2)
+      value: TECLA <-
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f67ea2c60cb48249a5d30c26beb3386, type: 2}
@@ -526,7 +536,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cfdfab1b3a17684a8ad17f0b0c2b3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyAnim: []
+  keyAnim:
+  - {fileID: 815643158}
+  - {fileID: 2045500104}
+  - {fileID: 1140513527}
+  - {fileID: 251987885}
 --- !u!4 &1050607203
 Transform:
   m_ObjectHideFlags: 0
@@ -534,7 +548,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1050607201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.888009, y: 0.643684, z: 0.028900499}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -549,7 +563,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4458242714573224, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.9123387
+      value: -5.84
       objectReference: {fileID: 0}
     - target: {fileID: 4458242714573224, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -582,6 +596,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a, type: 2}
   m_IsPrefabAsset: 0
+--- !u!95 &1140513527 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95191718114690766, guid: 8f67ea2c60cb48249a5d30c26beb3386,
+    type: 2}
+  m_PrefabInternal: {fileID: 1418514709}
 --- !u!1001 &1162068888
 Prefab:
   m_ObjectHideFlags: 0
@@ -725,6 +744,10 @@ Prefab:
         type: 2}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048450297569594, guid: 8f67ea2c60cb48249a5d30c26beb3386, type: 2}
+      propertyPath: m_Name
+      value: TECLA D
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f67ea2c60cb48249a5d30c26beb3386, type: 2}
@@ -7188,7 +7211,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1048450297569594, guid: 8f67ea2c60cb48249a5d30c26beb3386, type: 2}
       propertyPath: m_Name
-      value: TECLA (1)
+      value: TECLA A
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f67ea2c60cb48249a5d30c26beb3386, type: 2}
@@ -7222,3 +7245,8 @@ Transform:
   m_Father: {fileID: 1306326208}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2045500104 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95191718114690766, guid: 8f67ea2c60cb48249a5d30c26beb3386,
+    type: 2}
+  m_PrefabInternal: {fileID: 973815641}
