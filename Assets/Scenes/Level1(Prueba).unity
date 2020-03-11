@@ -6657,7 +6657,7 @@ Grid:
   m_GameObject: {fileID: 854775945}
   m_Enabled: 1
   m_CellSize: {x: 1, y: 1, z: 0}
-  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellGap: {x: -0.001, y: -0.001, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
 --- !u!4 &854775947
@@ -7690,6 +7690,26 @@ Prefab:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212471899728507938, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212471899728507938, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212471899728507938, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114733038808927816, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a,
+        type: 2}
+      propertyPath: m_Player
+      value: 
+      objectReference: {fileID: 2062983470}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a, type: 2}
   m_IsPrefabAsset: 0
@@ -8354,7 +8374,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1881772559}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1f64899321036d142bff3fa0f8b025f3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -8531,6 +8551,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2062983470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1095136870356872, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1545117929}
 --- !u!1 &2072669460
 GameObject:
   m_ObjectHideFlags: 0
