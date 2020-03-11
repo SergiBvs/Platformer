@@ -34,16 +34,25 @@ public class Player : MonoBehaviour {
 
     public Rigidbody2D m_PlayerRB2D;
     Vector3 DashDestination;
-    private GameManager m_GameManager;
     private ParticleSystem.MainModule feetParticles;
 
     public bool addforce = false;
+
+    private static Player instance;
+
+    public static Player GetInstance()
+    {
+        if(instance == null)
+        {
+            instance = new Player();
+        }
+        return instance;
+    }
 
 	void Start ()
     {
         DashCooldownOver = true;
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
-        m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         feetParticles = GetComponentInChildren<ParticleSystem>().main;
     }
 	
@@ -113,7 +122,7 @@ public class Player : MonoBehaviour {
             DashDestination = new Vector3(this.transform.position.x + 5*m_lastDirection, this.transform.position.y, 0);
             StartCoroutine(DashCooldown());
             m_Knockback = false;
-            m_GameManager.m_IsDashAvaliable = false;
+            GameManager.GetInstance().m_IsDashAvaliable = false;
         }
 
         //SALTO
@@ -289,7 +298,7 @@ public class Player : MonoBehaviour {
     {
             yield return new WaitForSeconds(0.5f);
             DashCooldownOver = true;
-            m_GameManager.m_IsDashAvaliable = true;
+            GameManager.GetInstance().m_IsDashAvaliable = true;
     }
 
     /*public IEnumerator RecievingDamageCD(Collision2D colision)
@@ -308,12 +317,12 @@ public class Player : MonoBehaviour {
     {
         if (!m_IsDashing)
         {
-            m_GameManager.m_Health--;
+            GameManager.GetInstance().m_Health--;
 
-            if (m_GameManager.m_Health <= 0)
+            if (GameManager.GetInstance().m_Health <= 0)
             {
                 Destroy(this.gameObject);
-                m_GameManager.m_GameOverPanel.SetActive(true);
+                GameManager.GetInstance().m_GameOverPanel.SetActive(true);
             }
 
             //KNOCKBACK
