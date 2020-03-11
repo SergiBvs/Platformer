@@ -59,26 +59,29 @@ public class Player : MonoBehaviour {
 
 
         //MOVIMIENTO
-        if (!m_IsOnIce)
+        if (!addforce)
         {
-            if (m_direction < 0)
+            if (!m_IsOnIce)
             {
-                m_PlayerRB2D.AddForce(new Vector2(-1, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
+                if (m_direction < 0)
+                {
+                    m_PlayerRB2D.AddForce(new Vector2(-1, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
+                }
+                else if (m_direction > 0)
+                {
+                    m_PlayerRB2D.AddForce(new Vector2(1, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
+                }
             }
-            else if (m_direction > 0)
+            else
             {
-                m_PlayerRB2D.AddForce(new Vector2(1, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
-            }
-        }
-        else
-        {
-            if (m_direction < 0)
-            {
-                m_PlayerRB2D.AddForce(new Vector2(-1, 0) * iceSpeed, ForceMode2D.Impulse);
-            }
-            else if (m_direction > 0)
-            {
-                m_PlayerRB2D.AddForce(new Vector2(1, 0) * iceSpeed, ForceMode2D.Impulse);
+                if (m_direction < 0)
+                {
+                    m_PlayerRB2D.AddForce(new Vector2(-1, 0) * iceSpeed, ForceMode2D.Impulse);
+                }
+                else if (m_direction > 0)
+                {
+                    m_PlayerRB2D.AddForce(new Vector2(1, 0) * iceSpeed, ForceMode2D.Impulse);
+                }
             }
         }
         
@@ -136,6 +139,8 @@ public class Player : MonoBehaviour {
         {
             transform.localScale = new Vector2(1, 1);
         }
+
+        print(addforce);
     }
 
     void Dash()
@@ -312,20 +317,20 @@ public class Player : MonoBehaviour {
             }
 
             //KNOCKBACK
-            if (colision.transform.position.x < transform.position.x)
+            if (colision.transform.position.x <= transform.position.x)
             {
-                
-                colision.transform.GetComponentInChildren<BasicEnemyMovement>().GoBack();
                 addforce = true;
-                m_PlayerRB2D.AddForce(new Vector2(100, 20), ForceMode2D.Impulse);
                 StartCoroutine(KnockbackTime());
+                m_PlayerRB2D.AddForce(new Vector2(10, 10), ForceMode2D.Impulse);
+                colision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
             }
             else
             {
                 addforce = true;
-                m_PlayerRB2D.AddForce(new Vector2(-100, 20), ForceMode2D.Impulse);
-                colision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
                 StartCoroutine(KnockbackTime());
+                m_PlayerRB2D.AddForce(new Vector2(-10, 10), ForceMode2D.Impulse);
+                colision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
+                
             }
         }
         else if (m_IsDashing) //si haces un dash o les saltas en la cabeza mueren
@@ -334,9 +339,9 @@ public class Player : MonoBehaviour {
         }
     }
 
-    IEnumerator KnockbackTime()
+    public IEnumerator KnockbackTime()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.5f);
         addforce = false;
     }
 
