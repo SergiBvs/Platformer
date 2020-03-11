@@ -1057,6 +1057,16 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 3.74
       objectReference: {fileID: 0}
+    - target: {fileID: 61840136073049786, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -0.15365493
+      objectReference: {fileID: 0}
+    - target: {fileID: 61840136073049786, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.6821344
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a, type: 2}
   m_IsPrefabAsset: 0
