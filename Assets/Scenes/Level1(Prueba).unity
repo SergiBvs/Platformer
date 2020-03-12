@@ -1069,6 +1069,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be6e9d9f22ec14f4d8be837c60647b58, type: 2}
   m_IsPrefabAsset: 0
+--- !u!95 &520684765 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95457723849059306, guid: be6e9d9f22ec14f4d8be837c60647b58,
+    type: 2}
+  m_PrefabInternal: {fileID: 520684764}
 --- !u!1001 &526517292
 Prefab:
   m_ObjectHideFlags: 0
@@ -6756,7 +6761,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.9622642, b: 0.9426138, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -12054,7 +12059,7 @@ MonoBehaviour:
   DashIndicatorIMG: {fileID: 1554429313}
   m_IsDashAvaliable: 0
   m_GameOverPanel: {fileID: 600709418}
-  m_Telon: {fileID: 0}
+  m_Telon: {fileID: 520684765}
 --- !u!4 &1385684788
 Transform:
   m_ObjectHideFlags: 0
