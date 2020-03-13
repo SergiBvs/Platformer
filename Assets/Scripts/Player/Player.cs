@@ -187,7 +187,6 @@ public class Player : MonoBehaviour {
         else if (collision.collider.CompareTag("Wall"))
         {
             m_IsDashing = false;
-            m_PlayerRB2D.gravityScale = 2;
         }
         else if (collision.collider.CompareTag("Ice"))
         {
@@ -234,7 +233,6 @@ public class Player : MonoBehaviour {
                     print("box");
                     m_IsDashing = false;
                     collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 * m_lastDirection, 0.1f) * 200, ForceMode2D.Impulse);
-                    m_PlayerRB2D.gravityScale = 2;
                 }
             }
             else

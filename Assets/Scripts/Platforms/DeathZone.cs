@@ -12,13 +12,11 @@ public class DeathZone : MonoBehaviour {
         m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Player>().m_IsDashing = false;
-            collision.gameObject.GetComponent<Player>().m_PlayerRB2D.gravityScale = 2;
-
+            collision.GetComponent<Player>().m_IsDashing = false;
             m_GameManager.m_Health--;
 
             if(m_GameManager.m_Health > 0)
