@@ -7,7 +7,6 @@ public class BasicEnemyMovement : MonoBehaviour
 
     public bool m_EnemyMovement;
     public float m_EnemySpeed = 2;
-    public Rigidbody2D m_EnemyRB2D;
 
 
     //---Moviment---
@@ -24,8 +23,7 @@ public class BasicEnemyMovement : MonoBehaviour
     void Start()
     {
         currentTarget = pivots[0];
-        m_EnemyMovement = true;
-        m_EnemyRB2D = GameObject.FindGameObjectWithTag("BasicEnemy").GetComponent<Rigidbody2D>();
+        //m_EnemyMovement = true;
         //EnemyLocalScaleY = this.transform.localScale.y;
     }
 

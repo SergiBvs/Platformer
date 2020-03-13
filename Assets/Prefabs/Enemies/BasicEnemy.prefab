@@ -359,12 +359,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634796f0cb2eab345965695a212623bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EnemyMovement: 0
+  m_EnemyMovement: 1
   m_EnemySpeed: 2
-  m_EnemyRB2D: {fileID: 0}
   pivots:
   - {fileID: 4793601918068076}
   - {fileID: 4759450424057608}
+  m_ObjectFlipped: 0
 --- !u!114 &114922998566299508
 MonoBehaviour:
   m_ObjectHideFlags: 1
