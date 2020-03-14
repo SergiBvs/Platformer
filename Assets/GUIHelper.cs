@@ -21,6 +21,7 @@ public class GUIHelper : MonoBehaviour {
 
     void Start()
     {
+        telon = GameObject.FindGameObjectWithTag("Telon").GetComponent<Animator>();
         GameManager.instance.ReassignObjs();
     }
 }
