@@ -8,8 +8,6 @@ public class Player : MonoBehaviour {
     float m_direction;
     [HideInInspector] public float m_lastDirection;
 
-    int knockbackDirection;
-
     //FUERZAS QUE AFECTAN AL PERSONAJE
 
     public int m_PlayerSpeed;
@@ -34,7 +32,7 @@ public class Player : MonoBehaviour {
 
     public Rigidbody2D m_PlayerRB2D;
     Vector3 DashDestination;
-    private GameManager m_GameManager;
+    //private GameManager m_GameManager;
     private ParticleSystem.MainModule feetParticles;
 
     public bool addforce = false;
@@ -43,13 +41,19 @@ public class Player : MonoBehaviour {
     {
         DashCooldownOver = true;
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
-        m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        //m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         feetParticles = GetComponentInChildren<ParticleSystem>().main;
     }
 	
 	
 	void Update ()
     {
+        ////////////DEBUG - Eliminar cuando no se necesite más///////////
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            GameManager.instance.RestartLevel();
+        }
+
         //DIRECCION
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
@@ -109,7 +113,7 @@ public class Player : MonoBehaviour {
             DashDestination = new Vector3(this.transform.position.x + 5*m_lastDirection, this.transform.position.y, 0);
             StartCoroutine(DashCooldown());
             m_Knockback = false;
-            m_GameManager.m_IsDashAvaliable = false;
+            GameManager.instance.DashIndicator(false);
         }
 
         //SALTO
@@ -135,8 +139,6 @@ public class Player : MonoBehaviour {
         {
             transform.localScale = new Vector2(1, 1);
         }
-
-        print(addforce);
     }
 
     void Dash()
@@ -292,15 +294,15 @@ public class Player : MonoBehaviour {
     {
         if (collision.CompareTag("Final"))
         {
-            m_GameManager.NextScene();
+            GameManager.instance.NextScene();
         }
     }
 
     public IEnumerator DashCooldown()
     {
-            yield return new WaitForSeconds(0.5f);
-            DashCooldownOver = true;
-            m_GameManager.m_IsDashAvaliable = true;
+        yield return new WaitForSeconds(0.5f);
+        DashCooldownOver = true;
+        GameManager.instance.DashIndicator(true);
     }
 
     /*public IEnumerator RecievingDamageCD(Collision2D colision)
@@ -319,7 +321,7 @@ public class Player : MonoBehaviour {
     {
         if (!m_IsDashing)
         {
-            m_GameManager.Health(-1);
+            GameManager.instance.Health(-1);
 
             //KNOCKBACK
             if (collision.transform.position.x <= transform.position.x)

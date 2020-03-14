@@ -8,55 +8,64 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
 
-    
-
+    public static GameManager instance;
    
     //__PLAYER STATS__//
 
         private GameObject m_Player;
         [HideInInspector] public static int m_Coins;
-        [HideInInspector] public static int m_Health;
+        [HideInInspector] public static int m_Health = 3;
 
     //__GAME UI__//
 
-        //Currency
-        public TextMeshProUGUI m_textCoins;
+        private GUIHelper GUIHelp;
 
         //Health
-        [HideInInspector] public static int m_nOfHearts;
-        public Image[] m_Hearts;
+        [HideInInspector] public static int m_nOfHearts = 3;
         public Sprite FullHeart;
         public Sprite EmptyHeart;
 
         //Dash
         public Sprite DashAvaliable;
         public Sprite DashUnavaliable;
-        public Image DashIndicatorIMG;
         [HideInInspector] public bool m_IsDashAvaliable;
 
     //__GAME OVER__//
         [HideInInspector] public bool m_GameOver;
-        public GameObject m_GameOverPanel;
+        private GameObject m_GameOverPanel;
 
     //__OTHER__//
-        public Animator m_Telon;
+        private Animator m_Telon;
+
+    void Awake()
+    {
+        
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     void Start()
     {
-        m_IsDashAvaliable = true;
-        m_Player = GameObject.FindGameObjectWithTag("Player");
-        CoinUpdate(0);
-        HealthSystem();
+        ReassignObjs();
     }
 
-    void Update()
+    public void ReassignObjs()
     {
-        DashIndicator();
-
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            RestartLevel();
-        }
+        m_IsDashAvaliable = true;
+        GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIHelper>();
+        m_Telon = GUIHelp.telon;
+        m_Player = GameObject.FindGameObjectWithTag("Player");
+        m_GameOver = false;
+        CoinUpdate(0);
+        HealthSystem();
+        DashIndicator(true);
     }
 
     public void Health(int howMuch)
@@ -65,8 +74,9 @@ public class GameManager : MonoBehaviour
         HealthSystem();
         if(m_Health <= 0)
         {
+            m_GameOver = true;
             Destroy(m_Player);
-            m_GameOverPanel.SetActive(true);
+            GUIHelp.m_GameOverPanel.SetActive(true);
         }
 
     }
@@ -78,44 +88,44 @@ public class GameManager : MonoBehaviour
             m_Health = m_nOfHearts;
         }
 
-        for (int i = 0; i < m_Hearts.Length; i++)
+        for (int i = 0; i < GUIHelp.m_Hearts.Length; i++)
         {
             if (i < m_Health)
             {
-                m_Hearts[i].sprite = FullHeart;
+                GUIHelp.m_Hearts[i].sprite = FullHeart;
             }
             else
             {
-                m_Hearts[i].sprite = EmptyHeart;
+                GUIHelp.m_Hearts[i].sprite = EmptyHeart;
             }
 
             if (i < m_nOfHearts)
             {
-                m_Hearts[i].enabled = true;
+                GUIHelp.m_Hearts[i].enabled = true;
             }
             else
             {
-                m_Hearts[i].enabled = false;
+                GUIHelp.m_Hearts[i].enabled = false;
             }
         }
     }
 
-    public void DashIndicator()
+    public void DashIndicator(bool l_isDashAvailable)
     {
-        if (m_IsDashAvaliable)
+        if (l_isDashAvailable)
         {
-            DashIndicatorIMG.sprite = DashAvaliable;
+            GUIHelp.DashIndicatorIMG.sprite = DashAvaliable;
         }
         else
         {
-            DashIndicatorIMG.sprite = DashUnavaliable;
+            GUIHelp.DashIndicatorIMG.sprite = DashUnavaliable;
         }
     }
 
     public void CoinUpdate(int howMuch)
     {
         m_Coins += howMuch;
-        m_textCoins.text = m_Coins + "x";
+        GUIHelp.m_textCoins.text = m_Coins + "x";
     }
 
     public void RestartLevel()

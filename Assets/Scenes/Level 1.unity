@@ -582,9 +582,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 441189729}
+  - component: {fileID: 441189730}
   m_Layer: 0
   m_Name: GUI
-  m_TagString: Untagged
+  m_TagString: GUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -605,6 +606,27 @@ Transform:
   m_Father: {fileID: 432175116}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &441189730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 441189728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b356e239aeeae744a922afd01105bf98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_textCoins: {fileID: 1392175500}
+  m_Hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 1387904468}
+  - {fileID: 1070484927}
+  - {fileID: 1024793588}
+  DashIndicatorIMG: {fileID: 1613866349}
+  m_GameOverPanel: {fileID: 1935548645}
 --- !u!1001 &524125800
 Prefab:
   m_ObjectHideFlags: 0
@@ -806,23 +828,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28713567bbbda442aac08e4bc0be8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PortalUsed: 0
-  m_textCoins: {fileID: 1392175500}
-  m_Coins: 0
-  m_Health: 3
-  m_nOfHearts: 3
-  m_Hearts:
-  - {fileID: 1387904468}
-  - {fileID: 1070484927}
-  - {fileID: 1024793588}
   FullHeart: {fileID: 21300000, guid: bcb6d759cfbf2fb488166ebbd72e5516, type: 3}
   EmptyHeart: {fileID: 21300000, guid: e6ab4aa73ffa06f4ab9dbf3f62a58463, type: 3}
   DashAvaliable: {fileID: 21300000, guid: a9da2937be5e22e439a281cd52ccae08, type: 3}
   DashUnavaliable: {fileID: 21300000, guid: 88af479ba66f17b42a88469006098465, type: 3}
-  DashIndicatorIMG: {fileID: 1613866349}
   m_IsDashAvaliable: 0
-  m_GameOverPanel: {fileID: 1935548645}
-  m_Telon: {fileID: 1900805408}
+  m_GameOver: 0
 --- !u!4 &713963787
 Transform:
   m_ObjectHideFlags: 0
@@ -8846,7 +8857,7 @@ GameObject:
   - component: {fileID: 1935548647}
   m_Layer: 5
   m_Name: GameOverPanel
-  m_TagString: Untagged
+  m_TagString: GameOverPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

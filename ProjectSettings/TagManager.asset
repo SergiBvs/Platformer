@@ -21,6 +21,8 @@ TagManager:
   - ShieldEnemyBody
   - Final
   - Telon
+  - GUI
+  - GameOverPanel
   layers:
   - Default
   - TransparentFX

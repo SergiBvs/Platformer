@@ -5,14 +5,12 @@ using UnityEngine;
 public class Portal : MonoBehaviour {
 
     public GameObject m_ConnectedPortal;
-    private GameManager m_GameManager;
     private Player m_Player;
 
     private bool m_PortalUsed = false;
 	
 	void Start ()
     {
-        m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         m_Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 	}
 	

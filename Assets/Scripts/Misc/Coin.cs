@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour {
 
-    private GameManager m_GameManager;
+    //private GameManager m_GameManager;
     private bool collect = false;
     public bool isDrop = false;
 
     void Start()
     {
-        m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        //m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         StartCoroutine(CollectCooldown());
         if (isDrop)
         {
@@ -24,7 +24,7 @@ public class Coin : MonoBehaviour {
         {
             if (collect)
             {
-                m_GameManager.CoinUpdate(1);
+                GameManager.instance.CoinUpdate(1);
                 Destroy(this.gameObject);
             }
         }

@@ -5,11 +5,11 @@ using UnityEngine;
 public class DeathZone : MonoBehaviour {
 
     public Transform m_RespawnPoint;
-    private GameManager m_GameManager;
+    //private GameManager m_GameManager;
 
     void Start()
     {
-        m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        //m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,7 +17,7 @@ public class DeathZone : MonoBehaviour {
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<Player>().m_IsDashing = false;
-            m_GameManager.Health(-1);
+            GameManager.instance.Health(-1);
             collision.gameObject.GetComponent<Player>().transform.position = m_RespawnPoint.position; 
         }
     }
