@@ -8,40 +8,67 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
 
-    [HideInInspector] public bool m_PortalUsed;
-    public TextMeshProUGUI m_textCoins;
-    [HideInInspector] public int m_Coins;
-    [HideInInspector] public int m_Health;
-    [HideInInspector] public int m_nOfHearts;
-    public Image[] m_Hearts;
-    public Sprite FullHeart;
-    public Sprite EmptyHeart;
-
-    public Sprite DashAvaliable;
-    public Sprite DashUnavaliable;
-    public Image DashIndicatorIMG;
-    [HideInInspector] public bool m_IsDashAvaliable;
-
-
-    public GameObject m_GameOverPanel;
-    public Animator m_Telon;
-
     
+
+   
+    //__PLAYER STATS__//
+
+        private GameObject m_Player;
+        [HideInInspector] public static int m_Coins;
+        [HideInInspector] public static int m_Health;
+
+    //__GAME UI__//
+
+        //Currency
+        public TextMeshProUGUI m_textCoins;
+
+        //Health
+        [HideInInspector] public static int m_nOfHearts;
+        public Image[] m_Hearts;
+        public Sprite FullHeart;
+        public Sprite EmptyHeart;
+
+        //Dash
+        public Sprite DashAvaliable;
+        public Sprite DashUnavaliable;
+        public Image DashIndicatorIMG;
+        [HideInInspector] public bool m_IsDashAvaliable;
+
+    //__GAME OVER__//
+        [HideInInspector] public bool m_GameOver;
+        public GameObject m_GameOverPanel;
+
+    //__OTHER__//
+        public Animator m_Telon;
+
     void Start()
     {
         m_IsDashAvaliable = true;
-        CoinUpdate();
+        m_Player = GameObject.FindGameObjectWithTag("Player");
+        CoinUpdate(0);
+        HealthSystem();
     }
 
     void Update()
     {
-        HealthSystem();
         DashIndicator();
 
         if(Input.GetKeyDown(KeyCode.R))
         {
             RestartLevel();
         }
+    }
+
+    public void Health(int howMuch)
+    {
+        m_Health += howMuch;
+        HealthSystem();
+        if(m_Health <= 0)
+        {
+            Destroy(m_Player);
+            m_GameOverPanel.SetActive(true);
+        }
+
     }
 
     public void HealthSystem()
@@ -85,8 +112,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CoinUpdate()
+    public void CoinUpdate(int howMuch)
     {
+        m_Coins += howMuch;
         m_textCoins.text = m_Coins + "x";
     }
 

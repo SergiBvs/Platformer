@@ -88,11 +88,7 @@ public class Player : MonoBehaviour {
         //LIMITE DE VELOCIDAD
         if (Mathf.Abs(m_PlayerRB2D.velocity.x) >= 0 && m_direction!=0)
         {
-            //if (m_Knockback)
-            //{
-            //    m_PlayerRB2D.velocity = new Vector2(m_PlayerSpeed * knockbackDirection, m_PlayerRB2D.velocity.y);
-            //}
-            /*else*/ if (!m_IsOnIce && !addforce)
+            if (!m_IsOnIce && !addforce)
             {
                 m_PlayerRB2D.velocity = new Vector2(m_PlayerSpeed * m_direction, m_PlayerRB2D.velocity.y);
                 iceSpeed = .4f;
@@ -319,38 +315,32 @@ public class Player : MonoBehaviour {
     }*/
 
 
-    public void RecievingDamage(Collision2D colision)
+    public void RecievingDamage(Collision2D collision)
     {
         if (!m_IsDashing)
         {
-            m_GameManager.m_Health--;
-
-            if (m_GameManager.m_Health <= 0)
-            {
-                Destroy(this.gameObject);
-                m_GameManager.m_GameOverPanel.SetActive(true);
-            }
+            m_GameManager.Health(-1);
 
             //KNOCKBACK
-            if (colision.transform.position.x <= transform.position.x)
+            if (collision.transform.position.x <= transform.position.x)
             {
                 addforce = true;
                 StartCoroutine(KnockbackTime());
                 m_PlayerRB2D.AddForce(new Vector2(10, 10), ForceMode2D.Impulse);
-                colision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
+                collision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
             }
             else
             {
                 addforce = true;
                 StartCoroutine(KnockbackTime());
                 m_PlayerRB2D.AddForce(new Vector2(-10, 10), ForceMode2D.Impulse);
-                colision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
+                collision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
                 
             }
         }
         else if (m_IsDashing) //si haces un dash o les saltas en la cabeza mueren
         {
-            colision.gameObject.GetComponent<EnemyParentScript>().DestroyParent();
+            collision.gameObject.GetComponent<EnemyParentScript>().DestroyParent();
         }
     }
 

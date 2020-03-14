@@ -17,19 +17,8 @@ public class DeathZone : MonoBehaviour {
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<Player>().m_IsDashing = false;
-            m_GameManager.m_Health--;
-
-            if(m_GameManager.m_Health > 0)
-            {
-                collision.gameObject.GetComponent<Player>().transform.position = m_RespawnPoint.position; 
-            }
-            else
-            {
-                Destroy(collision.gameObject);
-                m_GameManager.m_GameOverPanel.SetActive(true);
-                //pon la pantalla de muerte
-            }
-
+            m_GameManager.Health(-1);
+            collision.gameObject.GetComponent<Player>().transform.position = m_RespawnPoint.position; 
         }
     }
 }

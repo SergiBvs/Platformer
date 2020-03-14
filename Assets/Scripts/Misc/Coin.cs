@@ -24,8 +24,7 @@ public class Coin : MonoBehaviour {
         {
             if (collect)
             {
-                m_GameManager.m_Coins++;
-                m_GameManager.CoinUpdate();
+                m_GameManager.CoinUpdate(1);
                 Destroy(this.gameObject);
             }
         }

@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class BreakableScript : MonoBehaviour {
 
-	GameObject particleBurst;
-	GameObject coin;
+	private GameObject particleBurst;
+	private GameObject coin;
 
     public bool breakable = true;
 
-	public float coinBurst;
-
-	public bool needsCoins;
+    public bool needsCoins;
+    public float coinBurst;
 	
 	public int minCoins;
 	public int maxCoins;
