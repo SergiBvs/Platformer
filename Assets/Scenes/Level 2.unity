@@ -698,6 +698,7 @@ MonoBehaviour:
   - {fileID: 1024793588}
   DashIndicatorIMG: {fileID: 1613866349}
   m_GameOverPanel: {fileID: 1935548645}
+  telon: {fileID: 0}
 --- !u!1001 &441268131
 Prefab:
   m_ObjectHideFlags: 0
@@ -8656,8 +8657,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 4, y: -4, z: 0}
     second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 3
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -8845,8 +8846,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 7, y: -2, z: 0}
     second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 3
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -8964,17 +8965,21 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 41
     m_Data: {fileID: 11400000, guid: 9013797d54aeb284898162d6aa3bbdb8, type: 2}
-  - m_RefCount: 2
-    m_Data: {fileID: 11400000, guid: d5f8c3d0ddbab9c4291470c763ef904b, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 62a45a6df0a370e40811bacdaa10ac8c, type: 2}
+  - m_RefCount: 2
+    m_Data: {fileID: 11400000, guid: b763738877aa4b94fb9a0ad4a77a74e9, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 41
     m_Data: {fileID: 21300000, guid: 6a1f938e7b9354740922799c27a421f4, type: 3}
-  - m_RefCount: 2
-    m_Data: {fileID: 21300008, guid: 6a1f938e7b9354740922799c27a421f4, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: 21300002, guid: 6a1f938e7b9354740922799c27a421f4, type: 3}
+  - m_RefCount: 2
+    m_Data: {fileID: 21300016, guid: 6a1f938e7b9354740922799c27a421f4, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 46
     m_Data:
