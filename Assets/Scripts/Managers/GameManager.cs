@@ -140,6 +140,12 @@ public class GameManager : MonoBehaviour
         StartCoroutine(TelonWait(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
+    public void LoadScene(int scene)
+    {
+        m_Telon.SetTrigger("Telon");
+        StartCoroutine(TelonWait(scene));
+    }
+
     public IEnumerator TelonWait(int sceneToGo)
     {
         yield return new WaitForSeconds(1.3f);

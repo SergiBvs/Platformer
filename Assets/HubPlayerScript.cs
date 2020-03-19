@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HubPlayerScript : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class HubPlayerScript : MonoBehaviour
 
     public bool m_ObjectFlipped;
     public bool move = true;
+
+    
 
     // Use this for initialization
     void Start()
@@ -74,13 +77,17 @@ public class HubPlayerScript : MonoBehaviour
                     currentTarget = pivots[targetInt];
                     print(targetInt);
                 }
-                if (Input.GetAxisRaw("Horizontal") > 0)
+                else if (Input.GetAxisRaw("Horizontal") > 0)
                 {
                     dir = 1;
                     move = true;
                     targetInt += dir;
                     currentTarget = pivots[targetInt];
                     print(targetInt);
+                }
+                else if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    LoadScene(targetInt);
                 }
             }
             else if (targetInt == 0)
@@ -93,6 +100,10 @@ public class HubPlayerScript : MonoBehaviour
                     currentTarget = pivots[targetInt];
                     print(targetInt);
                 }
+                else if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    LoadScene(targetInt);
+                }
             }
             else dir = 0;
 
@@ -100,5 +111,18 @@ public class HubPlayerScript : MonoBehaviour
             
         }
 
+    }
+
+
+    public void LoadScene(int scene)
+    {
+        //m_Telon.SetTrigger("Telon");
+        StartCoroutine(TelonWait(scene));
+    }
+
+    public IEnumerator TelonWait(int sceneToGo)
+    {
+        yield return new WaitForSeconds(1.3f);
+        SceneManager.LoadScene(sceneToGo);
     }
 }
