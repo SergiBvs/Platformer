@@ -11,6 +11,8 @@ public class PlayerWeapon : MonoBehaviour {
 
     public GameObject m_Player;
 
+    int fliped = 1;
+
     bool m_weaponReady = true;
     Vector2 mousePos;
 
@@ -30,12 +32,12 @@ public class PlayerWeapon : MonoBehaviour {
                 m_shot.GetComponent<Rigidbody2D>().velocity = gunTip.transform.right * 7f;
                 m_Player.GetComponent<Player>().addforce = true;
                 StartCoroutine(m_Player.GetComponent<Player>().KnockbackTime());
-                m_Player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-mousePos.x, -mousePos.y).normalized * 10, ForceMode2D.Impulse);
+                m_Player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-mousePos.x * fliped, -mousePos.y * fliped).normalized * 10 , ForceMode2D.Impulse);
                 //Instantiate(m_shot, this.transform.position, transform.rotation);      
                 StartCoroutine(WeaponCooldown());
             }
         }
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = Camera.main.WorldToViewportPoint(Input.mousePosition);
 
         float AngleRad = Mathf.Atan2(mousePos.y - transform.position.y,mousePos.x - transform.position.x);
         float AngleDeg = (180 / Mathf.PI) * AngleRad;
@@ -48,10 +50,13 @@ public class PlayerWeapon : MonoBehaviour {
         if (mouse > 0.1f)
         {
             transform.localScale = new Vector2(-1, 1);
+            fliped = -1;
+            print("-x");
         }
         else
         {
             transform.localScale = new Vector2(1, 1);
+            fliped = 1;
         }
     }
 
