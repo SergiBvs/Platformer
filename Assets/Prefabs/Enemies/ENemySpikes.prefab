@@ -306,10 +306,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyMovement: 0
   m_EnemySpeed: 0.7
-  m_EnemyRB2D: {fileID: 0}
   pivots:
   - {fileID: 4620120271876344}
   - {fileID: 4331523513837054}
+  m_ObjectFlipped: 0
 --- !u!114 &114278782189336804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -336,7 +336,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 310ebd2cf9a8d6f4daf26548368d8ec5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

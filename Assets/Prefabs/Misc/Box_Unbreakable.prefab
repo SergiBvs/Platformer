@@ -36,8 +36,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1642204721453662}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.55, y: 3.04, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.000028001232, w: 1}
+  m_LocalPosition: {x: -6.5199714, y: -0.48730087, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakable: 0
-  coinBurst: 0
   needsCoins: 0
+  coinBurst: 0
   minCoins: 0
   maxCoins: 0
 --- !u!212 &212230352312067872
@@ -119,7 +119,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 310ebd2cf9a8d6f4daf26548368d8ec5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
