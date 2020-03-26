@@ -37,7 +37,7 @@ public class PlayerWeapon : MonoBehaviour {
                 StartCoroutine(WeaponCooldown());
             }
         }
-        mousePos = Camera.main.WorldToViewportPoint(Input.mousePosition);
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         float AngleRad = Mathf.Atan2(mousePos.y - transform.position.y,mousePos.x - transform.position.x);
         float AngleDeg = (180 / Mathf.PI) * AngleRad;
