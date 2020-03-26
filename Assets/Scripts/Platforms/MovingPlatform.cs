@@ -10,6 +10,14 @@ public class MovingPlatform : MonoBehaviour {
     private int targetInt = 0;
     int dir = 1;
 
+    public bool needsPlayerOnTop;
+    public bool needsButton;
+    public bool needsButtonPressed;
+
+    bool buttonDown;
+    bool buttonPressed;
+    bool playerOnTop;
+
     // Use this for initialization
     void Awake () {
         currentTarget = pivots[0];
@@ -18,11 +26,38 @@ public class MovingPlatform : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        
-        this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, 0.1f);
-        if(this.transform.position == currentTarget.position)
+        if (needsButton)
         {
-            if(targetInt == pivots.Length -1)
+            if (buttonDown) Movement();
+        }
+        else if (needsButtonPressed)
+        {
+            if (buttonPressed) Movement();
+        }
+        else if (needsPlayerOnTop)
+        {
+            if (playerOnTop) Movement();
+        }
+        
+        
+	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        collision.transform.parent = this.transform;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        collision.transform.parent = null;
+    }
+
+    private void Movement()
+    {
+        this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, 0.1f);
+        if (this.transform.position == currentTarget.position)
+        {
+            if (targetInt == pivots.Length - 1)
             {
                 dir = -1;
             }
@@ -34,16 +69,17 @@ public class MovingPlatform : MonoBehaviour {
             targetInt += dir;
             currentTarget = pivots[targetInt];
         }
-	}
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        collision.transform.parent = this.transform;
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    public void OnButtonPress()
     {
-        collision.transform.parent = null;
+        buttonDown = true;
+        buttonPressed = true;
+    }
+
+    public void OnButtonOut()
+    {
+        buttonPressed = false;
     }
 
 }
