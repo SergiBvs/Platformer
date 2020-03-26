@@ -8989,6 +8989,52 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1001 &998632663
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.962
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_RootOrder
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310851526666960, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_Name
+      value: EnemyCoin (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1139324712
 GameObject:
   m_ObjectHideFlags: 0
@@ -35695,6 +35741,52 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1001 &2033572049
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.466
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008769094728972, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_RootOrder
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310851526666960, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+      propertyPath: m_Name
+      value: EnemyCoin (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: efc8db801e9f6e948902fdae15431f69, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &2072669460
 GameObject:
   m_ObjectHideFlags: 0

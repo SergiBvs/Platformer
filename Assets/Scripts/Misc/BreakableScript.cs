@@ -59,10 +59,10 @@ public class BreakableScript : MonoBehaviour {
             int rand = Random.Range(minCoins, maxCoins);
             for (int i = 0; i <= rand; i++)
             {
-                coin = Instantiate((GameObject)Resources.Load("EnemyCoin"), this.transform.position, Quaternion.identity);
+                coin = Instantiate((GameObject)Resources.Load("EnemyCoin"), this.transform.position, Quaternion.Euler(0, 0, Random.Range(0, 90)));
                 coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(0.5f, 1f)) * coinBurst, ForceMode2D.Impulse);
-                float randSize = Random.Range(1, 2.5f);
-                coin.transform.localScale = new Vector2(randSize, randSize);
+                //float randSize = Random.Range(1, 2.5f);
+               // coin.transform.localScale = new Vector2(randSize, randSize);
 
             }
             Destroy(this.gameObject);
