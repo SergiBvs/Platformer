@@ -36595,7 +36595,7 @@ GameObject:
   - component: {fileID: 2127706439}
   - component: {fileID: 2127706438}
   - component: {fileID: 2127706437}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PlayerLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36691,7 +36691,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0

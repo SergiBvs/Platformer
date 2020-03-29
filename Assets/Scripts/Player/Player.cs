@@ -296,6 +296,10 @@ public class Player : MonoBehaviour {
         {
             GameManager.instance.NextScene();
         }
+        else if (collision.name == "MovingPlatform")
+        {
+            print("MovingPlatform");
+        }
     }
 
     public IEnumerator DashCooldown()
@@ -304,17 +308,6 @@ public class Player : MonoBehaviour {
         DashCooldownOver = true;
         GameManager.instance.DashIndicator(true);
     }
-
-    /*public IEnumerator RecievingDamageCD(Collision2D colision)
-    {
-        if (!m_HasExitedCollision)
-        {
-            m_HasRecievedDamage = true;
-            yield return new WaitForSeconds(5f);
-            RecievingDamage(colision);
-            m_HasRecievedDamage = false;
-        }
-    }*/
 
 
     public void RecievingDamage(Collision2D collision)
