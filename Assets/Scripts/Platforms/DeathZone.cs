@@ -17,7 +17,7 @@ public class DeathZone : MonoBehaviour {
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<Player>().m_IsDashing = false;
-            GameManager.instance.Health(-1);
+            //GameManager.instance.Health(-1);
             collision.gameObject.GetComponent<Player>().transform.position = m_RespawnPoint.position; 
         }
     }

@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
     {
         m_Health += howMuch;
         HealthSystem();
+
         if(m_Health <= 0)
         {
             m_GameOver = true;
