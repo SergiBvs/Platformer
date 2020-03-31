@@ -24,7 +24,23 @@ GameObject:
   - component: {fileID: 61828297515860040}
   m_Layer: 0
   m_Name: PlatformSprite
-  m_TagString: floor
+  m_TagString: MovingPlatform
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1262066566976642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4039949746853476}
+  - component: {fileID: 114076542254974332}
+  m_Layer: 0
+  m_Name: father
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,6 +108,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4039949746853476
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262066566976642}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4465100856271056}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4068409200916476
 Transform:
   m_ObjectHideFlags: 1
@@ -99,11 +128,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1933376073203198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.821, y: 0, z: 0}
+  m_LocalPosition: {x: -0.779, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4465100856271056}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4098376232636810
 Transform:
@@ -117,7 +146,7 @@ Transform:
   m_Children:
   - {fileID: 4195748097620694}
   m_Father: {fileID: 4465100856271056}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4195748097620694
 Transform:
@@ -126,8 +155,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587086969917624}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00038464853, y: -3.5675848, z: 0}
-  m_LocalScale: {x: 1.0060856, y: 7.97468, z: 1}
+  m_LocalPosition: {x: -0.00038464853, y: -3.682, z: 0}
+  m_LocalScale: {x: 1.0060856, y: 7.7434144, z: 1}
   m_Children: []
   m_Father: {fileID: 4098376232636810}
   m_RootOrder: 0
@@ -138,10 +167,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1464121883090982}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9603097, y: 0.8735559, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.24835873, y: -65.85432, z: 0.017595673}
   m_LocalScale: {x: 5.067, y: 0.501, z: 1}
   m_Children:
+  - {fileID: 4039949746853476}
   - {fileID: 4068409200916476}
   - {fileID: 4673938987904762}
   - {fileID: 4098376232636810}
@@ -155,11 +185,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1883533061916628}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.812, y: 0, z: 0}
+  m_LocalPosition: {x: 0.842, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4465100856271056}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &61036089659078332
 BoxCollider2D:
@@ -211,6 +241,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114076542254974332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262066566976642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377eb7a1cb811544aa7a6eca09e0344d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: {fileID: 4098376232636810}
 --- !u!114 &114388560863554508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,6 +267,11 @@ MonoBehaviour:
   pivots:
   - {fileID: 4068409200916476}
   - {fileID: 4673938987904762}
+  father: {fileID: 4039949746853476}
+  needsPlayerOnTop: 0
+  needsButton: 0
+  needsButtonPressed: 0
+  playerOnTop: 0
 --- !u!212 &212625421623808198
 SpriteRenderer:
   m_ObjectHideFlags: 1

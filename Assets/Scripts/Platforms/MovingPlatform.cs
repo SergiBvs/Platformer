@@ -6,17 +6,18 @@ public class MovingPlatform : MonoBehaviour {
 
     public Transform[] pivots;
     private Transform currentTarget;
+    public Transform father;
 
     private int targetInt = 0;
     int dir = 1;
 
-    public bool needsPlayerOnTop;
-    public bool needsButton;
-    public bool needsButtonPressed;
+    public bool needsPlayerOnTop = false;
+    public bool needsButton = false;
+    public bool needsButtonPressed = false;
 
     bool buttonDown;
     bool buttonPressed;
-    bool playerOnTop;
+    public bool playerOnTop;
 
     // Use this for initialization
     void Awake () {
@@ -38,18 +39,17 @@ public class MovingPlatform : MonoBehaviour {
         {
             if (playerOnTop) Movement();
         }
-        
-        
-	}
+        else Movement();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.transform.parent = this.transform;
+        collision.transform.parent = father;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        collision.transform.parent = null;
+       collision.transform.parent = null;
     }
 
     private void Movement()

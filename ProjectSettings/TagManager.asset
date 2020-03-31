@@ -23,6 +23,7 @@ TagManager:
   - Telon
   - GUI
   - GameOverPanel
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX

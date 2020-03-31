@@ -239,9 +239,12 @@ public class Player : MonoBehaviour {
                 HasTouchedFloor = true;
             }
         }
-        
-
-
+        else if (collision.collider.tag == "MovingPlatform")
+        {
+            HasTouchedFloor = true;
+            m_IsTouchingFloor = true;
+            print("MovingPlatform");
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -267,6 +270,12 @@ public class Player : MonoBehaviour {
             m_IsDashing = false;
             //if(!m_HasRecievedDamage)
             //StartCoroutine(RecievingDamageCD(collision));
+        }
+        else if (collision.collider.tag == "MovingPlatform")
+        {
+            HasTouchedFloor = true;
+            m_IsTouchingFloor = true;
+            print("MovingPlatform");
         }
     }
 
@@ -296,10 +305,7 @@ public class Player : MonoBehaviour {
         {
             GameManager.instance.NextScene();
         }
-        else if (collision.name == "MovingPlatform")
-        {
-            print("MovingPlatform");
-        }
+        
     }
 
     public IEnumerator DashCooldown()
