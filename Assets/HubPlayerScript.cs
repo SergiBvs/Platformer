@@ -75,7 +75,6 @@ public class HubPlayerScript : MonoBehaviour
                     move = true;
                     targetInt += dir;
                     currentTarget = pivots[targetInt];
-                    print(targetInt);
                 }
                 else if (Input.GetAxisRaw("Horizontal") > 0)
                 {
@@ -83,11 +82,10 @@ public class HubPlayerScript : MonoBehaviour
                     move = true;
                     targetInt += dir;
                     currentTarget = pivots[targetInt];
-                    print(targetInt);
                 }
                 else if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    LoadScene(targetInt);
+                    LoadScene(targetInt+1);
                 }
             }
             else if (targetInt == 0)
@@ -102,7 +100,7 @@ public class HubPlayerScript : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    LoadScene(targetInt);
+                    LoadScene(targetInt+1);
                 }
             }
             else dir = 0;
