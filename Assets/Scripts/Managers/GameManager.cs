@@ -132,12 +132,14 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         m_Telon.SetTrigger("Telon");
+        m_Health = 3;
         StartCoroutine(TelonWait(SceneManager.GetActiveScene().buildIndex));
     }
 
     public void NextScene()
     {
         m_Telon.SetTrigger("Telon");
+        m_Health = 3;
         StartCoroutine(TelonWait(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
