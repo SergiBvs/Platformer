@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
         private GameObject m_Player;
         [HideInInspector] public int m_Coins;
+        [HideInInspector] public int m_CurrentCoins = 0;
         [HideInInspector] public int m_Health = 3;
 
     //__GAME UI__//
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     //__OTHER__//
         [HideInInspector] public Animator m_Telon;
+        [HideInInspector] public bool m_IsGameOverPanelOn = false;
 
     void Awake()
     {
@@ -78,6 +80,7 @@ public class GameManager : MonoBehaviour
             m_GameOver = true;
             Destroy(m_Player);
             GUIHelp.m_GameOverPanel.SetActive(true);
+            m_IsGameOverPanelOn = true;
         }
 
     }
@@ -125,14 +128,16 @@ public class GameManager : MonoBehaviour
 
     public void CoinUpdate(int howMuch)
     {
-        m_Coins += howMuch;
-        GUIHelp.m_textCoins.text = m_Coins + "x";
+        m_CurrentCoins += howMuch;
+        GUIHelp.m_textCoins.text = (m_CurrentCoins + m_Coins) + "x";
     }
 
 
     public void NextScene()
     {
         m_Telon.SetTrigger("Telon");
+        m_Coins += m_CurrentCoins;
+        m_CurrentCoins = 0;
         m_Health = 3;
         StartCoroutine(TelonWait(SceneManager.GetActiveScene().buildIndex + 1));
     }

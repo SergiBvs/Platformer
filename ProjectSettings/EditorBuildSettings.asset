@@ -21,9 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Normal/Normal 0.unity
     guid: 8f6bcfccdd80f274ea4c7dce6077faef
   - enabled: 1
-    path: Assets/Scenes/Normal/Normal 1(no fet).unity
-    guid: 9e48947c6aeb866448a9ab956cf6d6f9
-  - enabled: 1
-    path: Assets/Scenes/Normal/Normal 2.unity
+    path: Assets/Scenes/Normal/Normal 1.unity
     guid: 492d89df1edd6544085d310c2d67ffe4
   m_configObjects: {}

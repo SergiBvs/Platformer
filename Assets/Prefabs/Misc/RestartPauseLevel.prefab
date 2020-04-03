@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4892325894790556}
   - component: {fileID: 114167553701118142}
   m_Layer: 0
-  m_Name: RestartLevel
+  m_Name: RestartPauseLevel
   m_TagString: RestartGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
