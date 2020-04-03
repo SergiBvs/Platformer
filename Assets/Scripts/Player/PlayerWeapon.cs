@@ -30,9 +30,7 @@ public class PlayerWeapon : MonoBehaviour {
                 m_weaponReady = false;
                 m_shot = Instantiate((GameObject)Resources.Load("Shot"), gunTip.transform.position, gunTip.transform.rotation);
                 m_shot.GetComponent<Rigidbody2D>().velocity = gunTip.transform.right * 7f;
-                m_Player.GetComponent<Player>().addforce = true;
-                StartCoroutine(m_Player.GetComponent<Player>().KnockbackTime());
-                m_Player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-mousePos.x * fliped, -mousePos.y * fliped).normalized * 10 , ForceMode2D.Impulse);
+                
                 //Instantiate(m_shot, this.transform.position, transform.rotation);      
                 StartCoroutine(WeaponCooldown());
             }
