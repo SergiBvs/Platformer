@@ -126,7 +126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4710442190663706, guid: cfc253e44d09be44ab5db6655773cef4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 11.08
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 4710442190663706, guid: cfc253e44d09be44ab5db6655773cef4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -151,6 +151,10 @@ Prefab:
     - target: {fileID: 4710442190663706, guid: cfc253e44d09be44ab5db6655773cef4, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486907301561548, guid: cfc253e44d09be44ab5db6655773cef4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 6.77
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfc253e44d09be44ab5db6655773cef4, type: 2}
@@ -616,7 +620,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyMovement: 0
   m_EnemySpeed: 2
-  m_EnemyRB2D: {fileID: 0}
   pivots:
   - {fileID: 1445945045}
   - {fileID: 1050097130}
@@ -1001,7 +1004,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyMovement: 0
   m_EnemySpeed: 2
-  m_EnemyRB2D: {fileID: 0}
   pivots:
   - {fileID: 1267968516}
   - {fileID: 242978197}
@@ -1281,22 +1283,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28713567bbbda442aac08e4bc0be8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PortalUsed: 0
-  m_textCoins: {fileID: 0}
-  m_Coins: 0
-  m_Health: 3
-  m_nOfHearts: 3
-  m_Hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   FullHeart: {fileID: 21300000, guid: bcb6d759cfbf2fb488166ebbd72e5516, type: 3}
   EmptyHeart: {fileID: 21300000, guid: e6ab4aa73ffa06f4ab9dbf3f62a58463, type: 3}
   DashAvaliable: {fileID: 0}
   DashUnavaliable: {fileID: 0}
-  DashIndicatorIMG: {fileID: 0}
   m_IsDashAvaliable: 0
-  m_GameOverPanel: {fileID: 0}
+  m_GameOver: 0
 --- !u!4 &1163269516
 Transform:
   m_ObjectHideFlags: 0

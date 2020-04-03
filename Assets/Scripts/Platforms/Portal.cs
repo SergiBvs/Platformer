@@ -7,7 +7,7 @@ public class Portal : MonoBehaviour {
     public GameObject m_ConnectedPortal;
     private Player m_Player;
 
-    private bool m_PortalUsed = false;
+    private static bool m_PortalUsed = false;
 	
 	void Start ()
     {
@@ -25,10 +25,10 @@ public class Portal : MonoBehaviour {
         {
             if(collision.CompareTag("Player"))  
             {
+                print("test");
                 m_Player.m_IsDashing = false;
                 m_PortalUsed = true;
                 collision.gameObject.transform.position = m_ConnectedPortal.transform.position;
-                collision.gameObject.GetComponent<Player>().m_PlayerRB2D.AddForce(m_ConnectedPortal.transform.right * 5);
             }
         }
     }
