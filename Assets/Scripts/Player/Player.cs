@@ -30,6 +30,7 @@ public class Player : MonoBehaviour {
 
     //OTRAS COSAS
 
+    private RestartGame m_RestartGame; //testing delete when done
     public Rigidbody2D m_PlayerRB2D;
     Vector3 DashDestination;
     //private GameManager m_GameManager;
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour {
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
         //m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         feetParticles = GetComponentInChildren<ParticleSystem>().main;
+        m_RestartGame = GameObject.FindGameObjectWithTag("RestartGame").GetComponent<RestartGame>(); //testing, delete when done
     }
 	
 	
@@ -51,7 +53,7 @@ public class Player : MonoBehaviour {
         ////////////DEBUG - Eliminar cuando no se necesite más///////////
         if (Input.GetKeyDown(KeyCode.R))
         {
-            GameManager.instance.RestartLevel();
+            m_RestartGame.RestartLevel();
         }
 
         //DIRECCION

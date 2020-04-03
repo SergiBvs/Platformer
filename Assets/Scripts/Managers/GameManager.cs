@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     //__PLAYER STATS__//
 
         private GameObject m_Player;
-        [HideInInspector] public static int m_Coins;
-        [HideInInspector] public static int m_Health = 3;
+        [HideInInspector] public int m_Coins;
+        [HideInInspector] public int m_Health = 3;
 
     //__GAME UI__//
 
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         private GameObject m_GameOverPanel;
 
     //__OTHER__//
-        private Animator m_Telon;
+        [HideInInspector] public Animator m_Telon;
 
     void Awake()
     {
@@ -129,12 +129,6 @@ public class GameManager : MonoBehaviour
         GUIHelp.m_textCoins.text = m_Coins + "x";
     }
 
-    public void RestartLevel()
-    {
-        m_Telon.SetTrigger("Telon");
-        m_Health = 3;
-        StartCoroutine(TelonWait(SceneManager.GetActiveScene().buildIndex));
-    }
 
     public void NextScene()
     {

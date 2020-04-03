@@ -24,6 +24,7 @@ TagManager:
   - GUI
   - GameOverPanel
   - MovingPlatform
+  - RestartGame
   layers:
   - Default
   - TransparentFX
