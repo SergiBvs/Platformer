@@ -206,6 +206,10 @@ public class Player : MonoBehaviour {
             {
                 feetParticles.startColor = new Color(61 / 255f, 52 / 255f, 69 / 255f, 1);
             }
+            else if (collision.collider.name == "LavaFloor")
+            {
+                feetParticles.startColor = new Color(19 / 255f, 13 / 255f, 12 / 255f, 1);
+            }
             else
             {
                 feetParticles.startColor = new Color(145 / 255f, 207 / 255f, 87 / 255f, 1);
@@ -358,20 +362,30 @@ public class Player : MonoBehaviour {
                 addforce = true;
                 StartCoroutine(KnockbackTime());
                 m_PlayerRB2D.AddForce(new Vector2(10, 10), ForceMode2D.Impulse);
-                collision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
+                if (collision.transform.GetComponentInParent<BasicEnemyMovement>())
+                {
+                    collision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
+                }
+                
             }
             else
             {
                 addforce = true;
                 StartCoroutine(KnockbackTime());
-                m_PlayerRB2D.AddForce(new Vector2(-10, 10), ForceMode2D.Impulse);
-                collision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
-                
+                m_PlayerRB2D.AddForce(new Vector2(-10, 10), ForceMode2D.Impulse); 
+                if (collision.transform.GetComponentInParent<BasicEnemyMovement>())
+                {
+                    collision.transform.GetComponentInParent<BasicEnemyMovement>().GoBack();
+                }
             }
         }
         else if (m_IsDashing) //si haces un dash o les saltas en la cabeza mueren
         {
-            collision.gameObject.GetComponent<EnemyParentScript>().DestroyParent();
+            if (collision.gameObject.GetComponent<EnemyParentScript>())
+            {
+                collision.gameObject.GetComponent<EnemyParentScript>().DestroyParent();
+            }
+            else Destroy(collision.gameObject);
         }
     }
 

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class SoulsandPlatform : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    float animspeed;
+
+    // Use this for initialization
+    void Start () {
+        animspeed = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().speed;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -18,7 +20,8 @@ public class SoulsandPlatform : MonoBehaviour {
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Player>().m_JumpForce = 2;
+            collision.gameObject.GetComponent<Player>().m_JumpForce = 7;
+            collision.gameObject.GetComponent<Animator>().speed = animspeed / 2;
         }
     }
 
@@ -26,7 +29,9 @@ public class SoulsandPlatform : MonoBehaviour {
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Player>().m_JumpForce = 7;
+            print("OutofSoulsand");
+            collision.gameObject.GetComponent<Player>().m_JumpForce = 10;
+            collision.gameObject.GetComponent<Animator>().speed = animspeed;
         }
     }
 }
