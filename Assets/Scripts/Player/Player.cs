@@ -51,9 +51,9 @@ public class Player : MonoBehaviour {
         m_RestartGame = GameObject.FindGameObjectWithTag("RestartGame").GetComponent<RestartPauseGame>(); //testing, delete when done
         anim = GetComponent<Animator>();
     }
-	
-	
-	void Update ()
+
+
+    void Update()
     {
         ////////////DEBUG - Eliminar cuando no se necesite más///////////
         if (Input.GetKeyDown(KeyCode.R))
@@ -77,12 +77,12 @@ public class Player : MonoBehaviour {
                 if (m_direction < 0)
                 {
                     m_PlayerRB2D.AddForce(new Vector2(-1, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
-                    anim.SetBool("WALK", true);
+                    if (m_IsTouchingFloor) anim.SetBool("WALK", true);
                 }
                 else if (m_direction > 0)
                 {
                     m_PlayerRB2D.AddForce(new Vector2(1, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
-                    anim.SetBool("WALK", true);
+                    if (m_IsTouchingFloor) anim.SetBool("WALK", true);
                 }
             }
             else
@@ -90,18 +90,18 @@ public class Player : MonoBehaviour {
                 if (m_direction < 0)
                 {
                     m_PlayerRB2D.AddForce(new Vector2(-1, 0) * iceSpeed, ForceMode2D.Impulse);
-                    anim.SetBool("WALK", true);
+                    if (m_IsTouchingFloor) anim.SetBool("WALK", true);
                 }
                 else if (m_direction > 0)
                 {
                     m_PlayerRB2D.AddForce(new Vector2(1, 0) * iceSpeed, ForceMode2D.Impulse);
-                    anim.SetBool("WALK", true);
+                    if(m_IsTouchingFloor) anim.SetBool("WALK", true);
                 }
             }
         }
-        
+
         //LIMITE DE VELOCIDAD
-        if (Mathf.Abs(m_PlayerRB2D.velocity.x) >= 0 && m_direction!=0)
+        if (Mathf.Abs(m_PlayerRB2D.velocity.x) >= 0 && m_direction != 0)
         {
             if (!m_IsOnIce && !addforce)
             {
@@ -110,36 +110,36 @@ public class Player : MonoBehaviour {
             }
         }
 
-        if(!m_IsOnIce && m_direction == 0 && !addforce)
+        if (!m_IsOnIce && m_direction == 0 && !addforce)
         {
             m_PlayerRB2D.velocity = new Vector2(0, m_PlayerRB2D.velocity.y);
             anim.SetBool("WALK", false);
         }
 
         //DASH
-        if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver && HasTouchedFloor) 
+        if (Input.GetMouseButtonDown(1) && !m_IsDashing && DashCooldownOver && HasTouchedFloor)
         {
             HasTouchedFloor = false;
             DashCooldownOver = false;
             m_IsDashing = true;
-            DashDestination = new Vector3(this.transform.position.x + 5*m_lastDirection, this.transform.position.y, 0);
+            DashDestination = new Vector3(this.transform.position.x + 5 * m_lastDirection, this.transform.position.y, 0);
             StartCoroutine(DashCooldown());
             m_Knockback = false;
             GameManager.instance.DashIndicator(false);
         }
 
         //SALTO
-        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             Jump();
         }
 
-        if(m_IsDashing)
+        if (m_IsDashing)
         {
             Dash();
         }
 
-        if(m_PlayerRB2D.velocity.y >= 0.01f)
+        if (m_PlayerRB2D.velocity.y >= 0.01f)
         {
             anim.SetBool("UP", true);
             anim.SetBool("DOWN", false);
@@ -149,11 +149,12 @@ public class Player : MonoBehaviour {
             anim.SetBool("DOWN", true);
             anim.SetBool("UP", false);
         }
-        else
+        else if (m_PlayerRB2D.velocity.y < 0.01f && m_PlayerRB2D.velocity.y > -0.01f && m_IsTouchingFloor)
         {
             anim.SetBool("UP", false);
             anim.SetBool("DOWN", false);
         }
+        
 
         //GIRAR hacia el ratón
         Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
