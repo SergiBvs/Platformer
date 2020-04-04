@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerWeapon : MonoBehaviour {
 
@@ -16,6 +17,10 @@ public class PlayerWeapon : MonoBehaviour {
     bool m_weaponReady = true;
     Vector2 mousePos;
 
+    public float WeaponCD = 2.5f;
+    public float CurrentWeaponCD;
+    public Slider WeaponCDSlider;
+    public GameObject WeaponCDCanvas;
 
     private SoundManager m_ShotSound;
 
@@ -27,20 +32,39 @@ public class PlayerWeapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
         if (Input.GetMouseButton(0))
         {
             if (m_weaponReady)
             {
+                WeaponCDCanvas.SetActive(true);
+                CurrentWeaponCD = WeaponCD;
+                print(CurrentWeaponCD);
                 m_ShotSound.m_AS.clip = m_ShotSound.m_ShotSound;
                 m_ShotSound.m_AS.Play();
 
                 m_weaponReady = false;
                 m_shot = Instantiate((GameObject)Resources.Load("Shot"), gunTip.transform.position, gunTip.transform.rotation);
                 m_shot.GetComponent<Rigidbody2D>().velocity = gunTip.transform.right * 7f;
+
+                //Instantiate(m_shot, this.transform.position, transform.rotation);     
                 
-                //Instantiate(m_shot, this.transform.position, transform.rotation);      
-                StartCoroutine(WeaponCooldown());
             }
+        }
+
+        WeaponCDSlider.value = CalculateSliderValue();
+
+        if (CurrentWeaponCD <= 0)
+        {
+            CurrentWeaponCD = 0;
+            m_weaponReady = true;
+            WeaponCDCanvas.SetActive(false);
+        }
+        else if (CurrentWeaponCD > 0)
+        {
+            print(CurrentWeaponCD);
+            CurrentWeaponCD -= Time.deltaTime;
         }
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -49,7 +73,7 @@ public class PlayerWeapon : MonoBehaviour {
 
         float angle = AngleDeg;
 
-        print(AngleDeg);
+        //print(AngleDeg);
 
         // Rotate Object
         this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
@@ -67,10 +91,14 @@ public class PlayerWeapon : MonoBehaviour {
         }
     }
 
+    
     IEnumerator WeaponCooldown()
     {
-        yield return new WaitForSeconds(2.5f);
-        m_weaponReady = true;
+        yield return null;
+    }
+    float CalculateSliderValue()
+    {
+        return (CurrentWeaponCD / WeaponCD);
     }
 
 }
