@@ -7,8 +7,7 @@ public class RestartPauseGame : MonoBehaviour
 {
     public GameObject m_PausePanel;
     public bool m_GameIsPaused;
-
-
+    
     void Update()
     {
         if(GameManager.instance.m_IsGameOverPanelOn == false)

@@ -68,6 +68,8 @@ public class GameManager : MonoBehaviour
         CoinUpdate(0);
         HealthSystem();
         DashIndicator(true);
+        GUIHelp.m_EndFlagSR = GUIHelp.m_Endflag.GetComponent<SpriteRenderer>();
+        GUIHelp.m_EndFlagSR.sprite = GUIHelp.m_EndFlagSad;
     }
 
     public void Health(int howMuch)

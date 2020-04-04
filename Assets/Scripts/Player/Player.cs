@@ -30,6 +30,7 @@ public class Player : MonoBehaviour {
 
     //OTRAS COSAS
 
+    private GUIHelper GUIHelp;
     private RestartPauseGame m_RestartGame; //testing delete when done
     public Rigidbody2D m_PlayerRB2D;
     Vector3 DashDestination;
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour {
 
 	void Start ()
     {
+        GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIHelper>();
         DashCooldownOver = true;
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
         //m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
@@ -305,6 +307,7 @@ public class Player : MonoBehaviour {
     {
         if (collision.CompareTag("Final"))
         {
+            GUIHelp.m_EndFlagSR.sprite = GUIHelp.m_EndFlagHappy;
             GameManager.instance.NextScene();
         }
         

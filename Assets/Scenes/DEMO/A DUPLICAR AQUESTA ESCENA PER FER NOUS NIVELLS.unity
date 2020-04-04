@@ -131,7 +131,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4401685684174410, guid: 2e34808cfd7165d4490657dd2ec1de12, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 26.72
+      value: 28.6
       objectReference: {fileID: 0}
     - target: {fileID: 4401685684174410, guid: 2e34808cfd7165d4490657dd2ec1de12, type: 2}
       propertyPath: m_LocalPosition.z
@@ -160,6 +160,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e34808cfd7165d4490657dd2ec1de12, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &42667555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1180696754080906, guid: 2e34808cfd7165d4490657dd2ec1de12,
+    type: 2}
+  m_PrefabInternal: {fileID: 42667554}
 --- !u!1001 &100016221
 Prefab:
   m_ObjectHideFlags: 0
@@ -1112,6 +1117,10 @@ MonoBehaviour:
   DashIndicatorIMG: {fileID: 1613866349}
   m_GameOverPanel: {fileID: 1935548645}
   telon: {fileID: 0}
+  m_Endflag: {fileID: 42667555}
+  m_EndFlagSR: {fileID: 0}
+  m_EndFlagSad: {fileID: 21300000, guid: 989dcdfa61991134ca14507cedff289c, type: 3}
+  m_EndFlagHappy: {fileID: 21300000, guid: 7902d20b2f58aad46b2da722e2426c03, type: 3}
 --- !u!1 &509289466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Coins: 0
+  m_CurrentCoins: 0
   m_Health: 3
   FullHeart: {fileID: 21300000, guid: bcb6d759cfbf2fb488166ebbd72e5516, type: 3}
   EmptyHeart: {fileID: 21300000, guid: e6ab4aa73ffa06f4ab9dbf3f62a58463, type: 3}

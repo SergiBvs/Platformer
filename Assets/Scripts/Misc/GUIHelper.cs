@@ -19,6 +19,13 @@ public class GUIHelper : MonoBehaviour {
     //Telon
     public Animator telon;
 
+    //EndFlag
+
+    public GameObject m_Endflag;
+    public SpriteRenderer m_EndFlagSR;
+    public Sprite m_EndFlagSad;
+    public Sprite m_EndFlagHappy;
+
     void Start()
     {
         telon = GameObject.FindGameObjectWithTag("Telon").GetComponent<Animator>();
