@@ -6,16 +6,19 @@ public class Portal : MonoBehaviour {
 
     public GameObject m_ConnectedPortal;
     private Player m_Player;
+    private SoundManager m_PortalSound;
 
     private static bool m_PortalUsed = false;
 	
 	void Start ()
     {
+        m_PortalSound = GameObject.FindGameObjectWithTag("PortalSound").GetComponent<SoundManager>();
         m_Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 	}
 	
 	
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
@@ -23,8 +26,11 @@ public class Portal : MonoBehaviour {
     {
         if(!m_PortalUsed)
         {
-            if(collision.CompareTag("Player"))  
+            if(collision.CompareTag("Player"))
             {
+                m_PortalSound.m_AS.clip = m_PortalSound.m_PortalSound;
+                m_PortalSound.m_AS.Play();
+
                 print("test");
                 m_Player.m_IsDashing = false;
                 m_PortalUsed = true;

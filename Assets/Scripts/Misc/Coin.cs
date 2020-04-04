@@ -7,9 +7,12 @@ public class Coin : MonoBehaviour {
     //private GameManager m_GameManager;
     private bool collect = false;
     public bool isDrop = false;
-
+    private SoundManager m_CoinPickUpSound;
+    
     void Start()
     {
+        m_CoinPickUpSound = GameObject.FindGameObjectWithTag("CoinPickUpSound").GetComponent<SoundManager>();
+       
         //m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         StartCoroutine(CollectCooldown());
         if (isDrop)
@@ -24,6 +27,15 @@ public class Coin : MonoBehaviour {
         {
             if (collect)
             {
+                float l_rand;
+
+                l_rand = Random.Range(0.8f, 1.5f);
+
+                m_CoinPickUpSound.m_AS.pitch = l_rand;
+
+                m_CoinPickUpSound.m_AS.clip = m_CoinPickUpSound.m_CoinPickUpSound;
+                m_CoinPickUpSound.m_AS.Play();
+
                 GameManager.instance.CoinUpdate(1);
                 Destroy(this.gameObject);
             }

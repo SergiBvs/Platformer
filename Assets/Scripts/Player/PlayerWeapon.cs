@@ -16,9 +16,13 @@ public class PlayerWeapon : MonoBehaviour {
     bool m_weaponReady = true;
     Vector2 mousePos;
 
+
+    private SoundManager m_ShotSound;
+
     // Use this for initialization
-    void Start () {
-       
+    void Start ()
+    {
+        m_ShotSound = GameObject.FindGameObjectWithTag("ShotSound").GetComponent<SoundManager>();
 	}
 	
 	// Update is called once per frame
@@ -27,6 +31,9 @@ public class PlayerWeapon : MonoBehaviour {
         {
             if (m_weaponReady)
             {
+                m_ShotSound.m_AS.clip = m_ShotSound.m_ShotSound;
+                m_ShotSound.m_AS.Play();
+
                 m_weaponReady = false;
                 m_shot = Instantiate((GameObject)Resources.Load("Shot"), gunTip.transform.position, gunTip.transform.rotation);
                 m_shot.GetComponent<Rigidbody2D>().velocity = gunTip.transform.right * 7f;

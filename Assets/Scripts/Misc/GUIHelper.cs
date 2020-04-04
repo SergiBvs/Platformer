@@ -22,13 +22,19 @@ public class GUIHelper : MonoBehaviour {
     //EndFlag
 
     public GameObject m_Endflag;
-    public SpriteRenderer m_EndFlagSR;
+    [HideInInspector] public SpriteRenderer m_EndFlagSR;
     public Sprite m_EndFlagSad;
     public Sprite m_EndFlagHappy;
+
+    //Sounds
+
+        [HideInInspector] public SoundManager m_DeathSound;
+        
 
     void Start()
     {
         telon = GameObject.FindGameObjectWithTag("Telon").GetComponent<Animator>();
+        m_DeathSound = GameObject.FindGameObjectWithTag("DeathSound").GetComponent<SoundManager>();
         GameManager.instance.ReassignObjs();
     }
 }

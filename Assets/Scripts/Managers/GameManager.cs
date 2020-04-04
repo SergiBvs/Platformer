@@ -35,9 +35,15 @@ public class GameManager : MonoBehaviour
         [HideInInspector] public bool m_GameOver;
         private GameObject m_GameOverPanel;
 
+    //__SOUNDS__//
+
+      
+
     //__OTHER__//
         [HideInInspector] public Animator m_Telon;
         [HideInInspector] public bool m_IsGameOverPanelOn = false;
+
+
 
     void Awake()
     {
@@ -70,6 +76,8 @@ public class GameManager : MonoBehaviour
         DashIndicator(true);
         GUIHelp.m_EndFlagSR = GUIHelp.m_Endflag.GetComponent<SpriteRenderer>();
         GUIHelp.m_EndFlagSR.sprite = GUIHelp.m_EndFlagSad;
+
+        
     }
 
     public void Health(int howMuch)
@@ -79,6 +87,9 @@ public class GameManager : MonoBehaviour
 
         if(m_Health <= 0)
         {
+            GUIHelp.m_DeathSound.m_AS.clip = GUIHelp.m_DeathSound.m_DeathSound;
+            GUIHelp.m_DeathSound.m_AS.Play();
+
             m_GameOver = true;
             Destroy(m_Player);
             GUIHelp.m_GameOverPanel.SetActive(true);

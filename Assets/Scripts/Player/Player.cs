@@ -30,6 +30,17 @@ public class Player : MonoBehaviour {
 
     [HideInInspector] public bool m_Knockback = false;
 
+    //SONIDOS
+
+    private SoundManager m_DashSound;
+    private SoundManager m_JumpSound;
+    private SoundManager m_GrassSound;
+    private SoundManager m_SnowSound;
+    private SoundManager m_HurtSound;
+    private SoundManager m_KillSound;
+    private SoundManager m_ShieldHitSound;
+    private SoundManager m_LevelCompleteSound;
+
     //OTRAS COSAS
 
     private GUIHelper GUIHelp;
@@ -50,6 +61,18 @@ public class Player : MonoBehaviour {
         feetParticles = GetComponentInChildren<ParticleSystem>().main;
         m_RestartGame = GameObject.FindGameObjectWithTag("RestartGame").GetComponent<RestartPauseGame>(); //testing, delete when done
         anim = GetComponent<Animator>();
+
+        //SONIDOS
+
+        m_DashSound = GameObject.FindGameObjectWithTag("DashSound").GetComponent<SoundManager>();
+        m_JumpSound = GameObject.FindGameObjectWithTag("JumpSound").GetComponent<SoundManager>();
+        m_GrassSound = GameObject.FindGameObjectWithTag("GrassSound").GetComponent<SoundManager>();
+        m_SnowSound = GameObject.FindGameObjectWithTag("SnowSound").GetComponent<SoundManager>();
+        m_HurtSound = GameObject.FindGameObjectWithTag("HurtSound").GetComponent<SoundManager>();
+        m_KillSound = GameObject.FindGameObjectWithTag("KillSound").GetComponent<SoundManager>();
+        m_ShieldHitSound = GameObject.FindGameObjectWithTag("ShieldHitSound").GetComponent<SoundManager>();
+        m_LevelCompleteSound = GameObject.FindGameObjectWithTag("LevelCompleteSound").GetComponent<SoundManager>();
+
     }
 
 
@@ -178,6 +201,11 @@ public class Player : MonoBehaviour {
         //Mover
         transform.position = Vector3.MoveTowards(this.transform.position, DashDestination, step);
 
+        //SONIDO
+
+        m_DashSound.m_AS.clip = m_DashSound.m_DashSound;
+        m_DashSound.m_AS.Play();
+
         //Acabar dash
         if (Vector3.Distance(this.transform.position, DashDestination) <= 0.005f)
         {
@@ -189,6 +217,9 @@ public class Player : MonoBehaviour {
     {
         if (m_IsTouchingFloor)
         {
+            m_JumpSound.m_AS.clip = m_JumpSound.m_JumpSound;
+            m_JumpSound.m_AS.Play();
+
             m_PlayerRB2D.AddForce(new Vector2(0, 1.5f) * m_JumpForce, ForceMode2D.Impulse);
             m_IsTouchingFloor = false;
         }
@@ -199,6 +230,18 @@ public class Player : MonoBehaviour {
         
         if (collision.collider.CompareTag("floor"))
         {
+            //provisional, quitar cuando se haga lo de los pasos
+
+            int l_rand;
+            l_rand = Random.Range(0, 2);
+
+            if(l_rand == 0)
+                m_GrassSound.m_AS.clip = m_GrassSound.m_GrassSound1;
+            if(l_rand == 1)
+                m_GrassSound.m_AS.clip = m_GrassSound.m_GrassSound2;
+
+            m_GrassSound.m_AS.Play();
+
             m_IsTouchingFloor = true;
             HasTouchedFloor = true;
             GetComponentInChildren<ParticleSystem>().Play();
@@ -237,6 +280,11 @@ public class Player : MonoBehaviour {
         }
         else if (collision.collider.CompareTag("Shield"))
         {
+            if(m_IsDashing)
+            {
+                m_ShieldHitSound.m_AS.clip = m_ShieldHitSound.m_ShieldHitSound;
+                m_ShieldHitSound.m_AS.Play();
+            }
             m_IsDashing = false;
             RecievingDamage(collision);
         }
@@ -249,6 +297,11 @@ public class Player : MonoBehaviour {
 
             //Eliminar enemigo
             collision.gameObject.GetComponent<EnemyParentScript>().DestroyParent();
+
+            //SONIDO
+
+            DestroySound();
+           
         }
         else if (collision.collider.CompareTag("Box"))
         {
@@ -256,6 +309,7 @@ public class Player : MonoBehaviour {
             {
                 if (collision.collider.GetComponent<BreakableScript>().breakable)
                 {
+                    DestroySound();
                     collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 * m_lastDirection, 0.1f) * 200, ForceMode2D.Impulse);
                     GetComponent<BreakableScript>().DestroyBox();
                 }
@@ -336,7 +390,12 @@ public class Player : MonoBehaviour {
     {
         if (collision.CompareTag("Final"))
         {
+
             GUIHelp.m_EndFlagSR.sprite = GUIHelp.m_EndFlagHappy;
+
+            m_LevelCompleteSound.m_AS.clip = m_LevelCompleteSound.m_LevelCompleteSound;
+            m_LevelCompleteSound.m_AS.Play();
+
             GameManager.instance.NextScene();
         }
         
@@ -355,6 +414,11 @@ public class Player : MonoBehaviour {
         if (!m_IsDashing)
         {
             GameManager.instance.Health(-1);
+
+            //SONIDO
+
+            m_HurtSound.m_AS.clip = m_HurtSound.m_HurtSound;
+            m_HurtSound.m_AS.Play();
 
             //KNOCKBACK
             if (collision.transform.position.x <= transform.position.x)
@@ -381,6 +445,8 @@ public class Player : MonoBehaviour {
         }
         else if (m_IsDashing) //si haces un dash o les saltas en la cabeza mueren
         {
+            DestroySound();
+
             if (collision.gameObject.GetComponent<EnemyParentScript>())
             {
                 collision.gameObject.GetComponent<EnemyParentScript>().DestroyParent();
@@ -393,6 +459,12 @@ public class Player : MonoBehaviour {
     {
         yield return new WaitForSeconds(.5f);
         addforce = false;
+    }
+
+    public void DestroySound()
+    {
+        m_KillSound.m_AS.clip = m_KillSound.m_KillSound;
+        m_KillSound.m_AS.Play();
     }
 
 }

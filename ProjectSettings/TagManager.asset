@@ -25,6 +25,19 @@ TagManager:
   - GameOverPanel
   - MovingPlatform
   - RestartGame
+  - CoinPickUpSound
+  - DashSound
+  - GrassSound
+  - GrenadeExplosion
+  - DeathSound
+  - HurtSound
+  - JumpSound
+  - KillSound
+  - LevelCompleteSound
+  - PortalSound
+  - ShieldHitSound
+  - ShotSound
+  - SnowSound
   layers:
   - Default
   - TransparentFX

@@ -6,8 +6,12 @@ public class PlayerShotScript : MonoBehaviour {
 
    	public GameObject explosion;
 
+    private SoundManager m_GrenadeExplosion;
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        m_GrenadeExplosion = GameObject.FindGameObjectWithTag("GrenadeExplosion").GetComponent<SoundManager>();
 		StartCoroutine(ShotExplode());
 	}
 	
@@ -24,6 +28,9 @@ public class PlayerShotScript : MonoBehaviour {
 
     void Explode()
     {
+        m_GrenadeExplosion.m_AS.clip = m_GrenadeExplosion.m_GrenadeExplosion;
+        m_GrenadeExplosion.m_AS.Play();
+
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
