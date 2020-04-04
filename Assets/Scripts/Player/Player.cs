@@ -26,6 +26,8 @@ public class Player : MonoBehaviour {
     [HideInInspector] public bool m_HasRecievedDamage = false;
     [HideInInspector]public bool m_HasExitedCollision;
 
+    [HideInInspector] public bool isFlipped = false;
+
     float iceSpeed = .4f;
 
     [HideInInspector] public bool m_Knockback = false;
@@ -186,6 +188,7 @@ public class Player : MonoBehaviour {
         if(mousePos > 0)
         {
             transform.localScale = new Vector2(-1,1);
+            isFlipped = true;
         } 
         else
         {

@@ -47,21 +47,23 @@ public class PlayerWeapon : MonoBehaviour {
         float AngleRad = Mathf.Atan2(mousePos.y - transform.position.y,mousePos.x - transform.position.x);
         float AngleDeg = (180 / Mathf.PI) * AngleRad;
 
+        float angle = AngleDeg;
+
+        print(AngleDeg);
+
         // Rotate Object
         this.transform.rotation = Quaternion.Euler(0, 0, AngleDeg);
 
         float mouse = transform.position.x - mousePos.x;
 
-        if (mouse > 0.1f)
+        if (mouse > 0)
         {
-            transform.localScale = new Vector2(-1, 1);
-            fliped = -1;
-            print("-x");
+                transform.localScale = new Vector2(-1, -1);
         }
-        else
+        else if(mouse < 0)
         {
             transform.localScale = new Vector2(1, 1);
-            fliped = 1;
+            
         }
     }
 

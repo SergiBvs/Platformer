@@ -29,7 +29,7 @@ public class Coin : MonoBehaviour {
             {
                 float l_rand;
 
-                l_rand = Random.Range(0.8f, 1.5f);
+                l_rand = Random.Range(0.8f, 1.2f);
 
                 m_CoinPickUpSound.m_AS.pitch = l_rand;
 
