@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
     float m_direction;
     [HideInInspector] public float m_lastDirection;
 
+    private Animator anim;
+
     //FUERZAS QUE AFECTAN AL PERSONAJE
 
     public int m_PlayerSpeed;
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour {
         //m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         feetParticles = GetComponentInChildren<ParticleSystem>().main;
         m_RestartGame = GameObject.FindGameObjectWithTag("RestartGame").GetComponent<RestartPauseGame>(); //testing, delete when done
+        anim = GetComponent<Animator>();
     }
 	
 	
@@ -74,10 +77,12 @@ public class Player : MonoBehaviour {
                 if (m_direction < 0)
                 {
                     m_PlayerRB2D.AddForce(new Vector2(-1, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
+                    anim.SetBool("WALK", true);
                 }
                 else if (m_direction > 0)
                 {
                     m_PlayerRB2D.AddForce(new Vector2(1, 0) * m_PlayerSpeed, ForceMode2D.Impulse);
+                    anim.SetBool("WALK", true);
                 }
             }
             else
@@ -85,10 +90,12 @@ public class Player : MonoBehaviour {
                 if (m_direction < 0)
                 {
                     m_PlayerRB2D.AddForce(new Vector2(-1, 0) * iceSpeed, ForceMode2D.Impulse);
+                    anim.SetBool("WALK", true);
                 }
                 else if (m_direction > 0)
                 {
                     m_PlayerRB2D.AddForce(new Vector2(1, 0) * iceSpeed, ForceMode2D.Impulse);
+                    anim.SetBool("WALK", true);
                 }
             }
         }
@@ -106,6 +113,7 @@ public class Player : MonoBehaviour {
         if(!m_IsOnIce && m_direction == 0 && !addforce)
         {
             m_PlayerRB2D.velocity = new Vector2(0, m_PlayerRB2D.velocity.y);
+            anim.SetBool("WALK", false);
         }
 
         //DASH
@@ -129,6 +137,22 @@ public class Player : MonoBehaviour {
         if(m_IsDashing)
         {
             Dash();
+        }
+
+        if(m_PlayerRB2D.velocity.y >= 0.01f)
+        {
+            anim.SetBool("UP", true);
+            anim.SetBool("DOWN", false);
+        }
+        else if (m_PlayerRB2D.velocity.y <= -0.01f)
+        {
+            anim.SetBool("DOWN", true);
+            anim.SetBool("UP", false);
+        }
+        else
+        {
+            anim.SetBool("UP", false);
+            anim.SetBool("DOWN", false);
         }
 
         //GIRAR hacia el ratón
