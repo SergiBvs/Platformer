@@ -139,6 +139,22 @@ public class Player : MonoBehaviour {
             Dash();
         }
 
+        if(m_PlayerRB2D.velocity.y >= 0.01f)
+        {
+            anim.SetBool("UP", true);
+            anim.SetBool("DOWN", false);
+        }
+        else if (m_PlayerRB2D.velocity.y <= -0.01f)
+        {
+            anim.SetBool("DOWN", true);
+            anim.SetBool("UP", false);
+        }
+        else
+        {
+            anim.SetBool("UP", false);
+            anim.SetBool("DOWN", false);
+        }
+
         //GIRAR hacia el ratón
         Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float mousePos = transform.position.x - mouse.x;

@@ -18,6 +18,10 @@ TextureImporter:
     21300026: Player_XD_13
     21300028: Player_XD_14
     21300030: Player_XD_15
+    21300032: Player_XD_16
+    21300034: Player_XD_17
+    21300036: Player_XD_18
+    21300038: Player_XD_19
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -117,7 +121,7 @@ TextureImporter:
         x: 10
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,9 +141,9 @@ TextureImporter:
         x: 42
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -157,9 +161,9 @@ TextureImporter:
         x: 74
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,9 +181,9 @@ TextureImporter:
         x: 106
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,9 +201,9 @@ TextureImporter:
         x: 138
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -217,9 +221,9 @@ TextureImporter:
         x: 170
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -237,9 +241,9 @@ TextureImporter:
         x: 202
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -257,9 +261,9 @@ TextureImporter:
         x: 234
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -277,9 +281,9 @@ TextureImporter:
         x: 266
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -297,9 +301,9 @@ TextureImporter:
         x: 298
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -317,9 +321,9 @@ TextureImporter:
         x: 330
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -337,9 +341,9 @@ TextureImporter:
         x: 362
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -357,9 +361,9 @@ TextureImporter:
         x: 394
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -377,9 +381,9 @@ TextureImporter:
         x: 426
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -397,9 +401,9 @@ TextureImporter:
         x: 458
         y: 0
         width: 11
-        height: 17
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -417,7 +421,27 @@ TextureImporter:
         x: 490
         y: 0
         width: 11
-        height: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 026298026e569904a88389b9828650da
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_XD_16
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 0
+        width: 11
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -425,7 +449,67 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 026298026e569904a88389b9828650da
+      spriteID: 099b36b52624c78448259865c25441b9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_XD_17
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 0
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93a59a64abaef2c4e8a5feb4032ce7a5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_XD_18
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 0
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97b2e6148cb46434f94c615710d57929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_XD_19
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 0
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e88d93ab523786a4386623e0c9f213c6
       vertices: []
       indices: 
       edges: []
