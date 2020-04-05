@@ -256,7 +256,7 @@ public class Player : MonoBehaviour {
             }
             else if (collision.collider.name == "LavaFloor")
             {
-                feetParticles.startColor = new Color(19 / 255f, 13 / 255f, 12 / 255f, 1);
+                feetParticles.startColor = new Color(231 / 255f, 137 / 255f, 32 / 255f, 1);
             }
             else
             {
