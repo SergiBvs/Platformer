@@ -38,6 +38,8 @@ TagManager:
   - ShieldHitSound
   - ShotSound
   - SnowSound
+  - BounceSound
+  - HealthUpSound
   layers:
   - Default
   - TransparentFX

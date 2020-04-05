@@ -6,12 +6,14 @@ public class SoundManager : MonoBehaviour {
 
     [HideInInspector] public AudioSource m_AS;
 
+    public AudioClip m_BounceSound; //done
     public AudioClip m_CoinPickUpSound; //done
     public AudioClip m_DashSound; //done
     public AudioClip m_DeathSound; //done
     public AudioClip m_GrassSound1;
     public AudioClip m_GrassSound2;
     public AudioClip m_GrenadeExplosion; //done
+    public AudioClip m_HealthUpSound;
     public AudioClip m_HurtSound;//done
     public AudioClip m_JumpSound;//done
     public AudioClip m_KillSound;//done

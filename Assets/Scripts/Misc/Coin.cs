@@ -44,7 +44,7 @@ public class Coin : MonoBehaviour {
 
     IEnumerator CollectCooldown()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         collect = true;
     }
 

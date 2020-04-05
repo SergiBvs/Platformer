@@ -40,7 +40,7 @@ public class PlayerWeapon : MonoBehaviour {
             {
                 WeaponCDCanvas.SetActive(true);
                 CurrentWeaponCD = WeaponCD;
-                print(CurrentWeaponCD);
+                //print(CurrentWeaponCD);
                 m_ShotSound.m_AS.clip = m_ShotSound.m_ShotSound;
                 m_ShotSound.m_AS.Play();
 
@@ -63,7 +63,7 @@ public class PlayerWeapon : MonoBehaviour {
         }
         else if (CurrentWeaponCD > 0)
         {
-            print(CurrentWeaponCD);
+            //print(CurrentWeaponCD);
             CurrentWeaponCD -= Time.deltaTime;
         }
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
