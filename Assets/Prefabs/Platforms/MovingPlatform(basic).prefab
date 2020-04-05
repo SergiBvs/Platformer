@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 114388560863554508}
   - component: {fileID: 61828297515860040}
   m_Layer: 0
-  m_Name: PlatformSprite
-  m_TagString: MovingPlatform
+  m_Name: PlatformHolder
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,8 +141,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1199262130087988}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0023, y: 0.4376, z: 0}
-  m_LocalScale: {x: 1.039889, y: 0.14984928, z: 1}
+  m_LocalPosition: {x: 0.0076957, y: 1.4187, z: 0}
+  m_LocalScale: {x: 5, y: 0.118590005, z: 1}
   m_Children:
   - {fileID: 4195748097620694}
   m_Father: {fileID: 4465100856271056}
@@ -155,8 +155,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587086969917624}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00038464853, y: -3.682, z: 0}
-  m_LocalScale: {x: 1.0060856, y: 7.7434144, z: 1}
+  m_LocalPosition: {x: -0.0011, y: -1.122, z: 0}
+  m_LocalScale: {x: 1.01, y: 3.0431402, z: 1}
   m_Children: []
   m_Father: {fileID: 4098376232636810}
   m_RootOrder: 0
@@ -168,8 +168,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1464121883090982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.68, y: 30.88, z: 0.017595673}
-  m_LocalScale: {x: 5.067, y: 0.501, z: 1}
+  m_LocalPosition: {x: 13.57, y: 4.37, z: -0.41990432}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4039949746853476}
   - {fileID: 4068409200916476}
@@ -224,7 +224,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1199262130087988}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1f64899321036d142bff3fa0f8b025f3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -268,10 +268,6 @@ MonoBehaviour:
   - {fileID: 4068409200916476}
   - {fileID: 4673938987904762}
   father: {fileID: 4039949746853476}
-  needsPlayerOnTop: 0
-  needsButton: 0
-  needsButtonPressed: 0
-  playerOnTop: 0
 --- !u!212 &212625421623808198
 SpriteRenderer:
   m_ObjectHideFlags: 1

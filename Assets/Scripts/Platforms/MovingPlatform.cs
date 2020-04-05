@@ -6,18 +6,14 @@ public class MovingPlatform : MonoBehaviour {
 
     public Transform[] pivots;
     private Transform currentTarget;
+
     public Transform father;
 
     private int targetInt = 0;
     int dir = 1;
 
-    public bool needsPlayerOnTop = false;
-    public bool needsButton = false;
-    public bool needsButtonPressed = false;
+    Vector3 playerOriginalSize;
 
-    bool buttonDown;
-    bool buttonPressed;
-    public bool playerOnTop;
 
     // Use this for initialization
     void Awake () {
@@ -27,33 +23,7 @@ public class MovingPlatform : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (needsButton)
-        {
-            if (buttonDown) Movement();
-        }
-        else if (needsButtonPressed)
-        {
-            if (buttonPressed) Movement();
-        }
-        else if (needsPlayerOnTop)
-        {
-            if (playerOnTop) Movement();
-        }
-        else Movement();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        collision.transform.parent = father;
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-       collision.transform.parent = null;
-    }
-
-    private void Movement()
-    {
+        
         this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, 0.1f);
         if (this.transform.position == currentTarget.position)
         {
@@ -69,17 +39,49 @@ public class MovingPlatform : MonoBehaviour {
             targetInt += dir;
             currentTarget = pivots[targetInt];
         }
+        //Movement();
     }
 
-    public void OnButtonPress()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        buttonDown = true;
-        buttonPressed = true;
+        collision.transform.SetParent(father);
+
     }
 
-    public void OnButtonOut()
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        buttonPressed = false;
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        collision.transform.parent = null;
+        //StartCoroutine(prueba(collision));
+    }
+
+    //private void Movement()
+    //{
+    //    this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, 0.1f);
+    //    if (this.transform.position == currentTarget.position)
+    //    {
+    //        if (targetInt == pivots.Length - 1)
+    //        {
+    //            dir = -1;
+    //        }
+    //        else if (targetInt == 0)
+    //        {
+    //            dir = 1;
+    //        }
+
+    //        targetInt += dir;
+    //        currentTarget = pivots[targetInt];
+    //    }
+    //}
+
+    //IEnumerator prueba(Collision2D collision)
+    //{
+    //    yield return new WaitForSeconds(0.1f);
+    //    collision.transform.parent = null;
+    //}
+
 
 }

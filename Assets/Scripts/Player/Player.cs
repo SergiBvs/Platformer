@@ -240,9 +240,9 @@ public class Player : MonoBehaviour {
             int l_rand;
             l_rand = Random.Range(0, 2);
 
-            if(l_rand == 0)
+            if (l_rand == 0)
                 m_GrassSound.m_AS.clip = m_GrassSound.m_GrassSound1;
-            if(l_rand == 1)
+            if (l_rand == 1)
                 m_GrassSound.m_AS.clip = m_GrassSound.m_GrassSound2;
 
             m_GrassSound.m_AS.Play();
@@ -331,12 +331,6 @@ public class Player : MonoBehaviour {
                 HasTouchedFloor = true;
             }
         }
-        else if (collision.collider.tag == "MovingPlatform")
-        {
-            HasTouchedFloor = true;
-            m_IsTouchingFloor = true;
-            print("MovingPlatform");
-        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -362,12 +356,6 @@ public class Player : MonoBehaviour {
             m_IsDashing = false;
             //if(!m_HasRecievedDamage)
             //StartCoroutine(RecievingDamageCD(collision));
-        }
-        else if (collision.collider.tag == "MovingPlatform")
-        {
-            HasTouchedFloor = true;
-            m_IsTouchingFloor = true;
-            print("MovingPlatform");
         }
     }
 
@@ -403,6 +391,7 @@ public class Player : MonoBehaviour {
 
             GameManager.instance.LoadScene(SceneToLoad);
         }
+
         
     }
 
