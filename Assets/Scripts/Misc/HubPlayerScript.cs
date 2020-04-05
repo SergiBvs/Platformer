@@ -85,7 +85,7 @@ public class HubPlayerScript : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    LoadScene(targetInt+1);
+                    LoadScene(targetInt+6);
                 }
             }
             else if (targetInt == 0)
@@ -100,7 +100,7 @@ public class HubPlayerScript : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    LoadScene(targetInt+1);
+                    LoadScene(targetInt+6);
                 }
             }
             else dir = 0;

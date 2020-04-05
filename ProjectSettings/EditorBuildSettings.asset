@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ATutorial/Level 3.unity
     guid: e9cd3b9937aa2e844995ed15c388046b
   - enabled: 1
+    path: Assets/Scenes/MainHub.unity
+    guid: 899dee8575a8df249a83274bed6604e8
+  - enabled: 1
     path: Assets/Scenes/DEMO/Level 1 (hills).unity
     guid: 56dfd7d8d497aa0419447211fd427e22
   - enabled: 1

@@ -3042,6 +3042,7 @@ GameObject:
   m_Component:
   - component: {fileID: 801622711}
   - component: {fileID: 801622712}
+  - component: {fileID: 801622713}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -3075,7 +3076,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3157,6 +3158,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &801622713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 801622710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed32ce3c94970f42862c9e4fdffe52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &813348025
 GameObject:
   m_ObjectHideFlags: 0
@@ -3805,6 +3817,11 @@ Prefab:
     - target: {fileID: 4458242714573224, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114175849821365092, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a,
+        type: 2}
+      propertyPath: SceneToLoad
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72ff5d66c0bb20841a7b9fa4cbf5066a, type: 2}

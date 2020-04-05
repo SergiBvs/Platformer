@@ -54,6 +54,8 @@ public class Player : MonoBehaviour {
 
     public bool addforce = false;
 
+    public int SceneToLoad = 5;
+
 	void Start ()
     {
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIHelper>();
@@ -399,7 +401,7 @@ public class Player : MonoBehaviour {
             m_LevelCompleteSound.m_AS.clip = m_LevelCompleteSound.m_LevelCompleteSound;
             m_LevelCompleteSound.m_AS.Play();
 
-            GameManager.instance.NextScene();
+            GameManager.instance.LoadScene(SceneToLoad);
         }
         
     }

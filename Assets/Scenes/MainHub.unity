@@ -140,12 +140,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28713567bbbda442aac08e4bc0be8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Coins: 0
+  m_CurrentCoins: 0
+  m_Health: 3
   FullHeart: {fileID: 0}
   EmptyHeart: {fileID: 0}
   DashAvaliable: {fileID: 0}
   DashUnavaliable: {fileID: 0}
   m_IsDashAvaliable: 0
   m_GameOver: 0
+  m_Telon: {fileID: 0}
+  m_IsGameOverPanelOn: 0
 --- !u!4 &270369630
 Transform:
   m_ObjectHideFlags: 0
@@ -410,7 +415,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
-  m_Sprite: {fileID: 21300000, guid: 3d642f2e0a94a654a9975022eb8a159e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e933de08e47f954f87dbb98af859e66, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
