@@ -17,7 +17,7 @@ public class VolcanoRockSpawner : MonoBehaviour {
 		spawnCD -= Time.deltaTime;
 		if(spawnCD <= 0)
 		{
-			spawnCD = Random.Range(1f, 3.5f);
+			spawnCD = Random.Range(2f, 4.5f);
 			Instantiate(Resources.Load("VolcanoRock"), new Vector2(transform.position.x + Random.Range(-7f, 7f), transform.position.y), Quaternion.identity);
 		}
 	

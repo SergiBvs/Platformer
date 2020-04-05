@@ -7,6 +7,9 @@ public class ButtonBehaviour : MonoBehaviour {
 	public enum ButtonType { GateOpener_OnPress, GateOpener_WhilePressed, PlatformMover_OnPress, PlatformMover_WhilePressed, Activator,}
 	public ButtonType bType;
 
+	public Sprite offSprite;
+	public Sprite onSprite;
+
 	//Gate Opener
 	public GameObject gateToOpen;
 
@@ -50,9 +53,9 @@ public class ButtonBehaviour : MonoBehaviour {
 				case ButtonType.Activator:
 					thingToActivate.SetActive(true);
 					break;
-
-					
 			}
+
+			GetComponent<SpriteRenderer>().sprite = onSprite;
 		}
 	}
 
@@ -64,9 +67,11 @@ public class ButtonBehaviour : MonoBehaviour {
 			{
 				case ButtonType.GateOpener_WhilePressed:
 					gateToOpen.SetActive(true);
+					GetComponent<SpriteRenderer>().sprite = offSprite;
 					break;
 				case ButtonType.PlatformMover_WhilePressed:
 					platformToMove.GetComponent<MovingPlatform>().enabled = false;
+					GetComponent<SpriteRenderer>().sprite = offSprite;
 					break;
 			}
 		}
