@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ButtonBehaviour : MonoBehaviour {
 
-	public enum ButtonType { GateOpener_OnPress, GateOpener_WhilePressed, PlatformMover_OnPress, PlatformMover_WhilePressed}
+	public enum ButtonType { GateOpener_OnPress, GateOpener_WhilePressed, PlatformMover_OnPress, PlatformMover_WhilePressed, Activator}
 	public ButtonType bType;
 
 	//Gate Opener
@@ -12,6 +12,9 @@ public class ButtonBehaviour : MonoBehaviour {
 
 	//Platform Mover
 	public GameObject platformToMove;
+
+	//Activator
+	public GameObject thingToActivate;
 
 	// Use this for initialization
 	void Start () {
@@ -42,6 +45,9 @@ public class ButtonBehaviour : MonoBehaviour {
 					break;
 				case ButtonType.PlatformMover_WhilePressed:
 					//Activar movimiento de la plataforma.
+					break;
+				case ButtonType.Activator:
+					thingToActivate.SetActive(true);
 					break;
 
 					
