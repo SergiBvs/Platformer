@@ -28,7 +28,7 @@ public class TutorialMusic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		string sc = SceneManager.GetActiveScene().name;
-		if (sc == "MainHub")
+		if (sc == "AMainHub")
 		{
 			instance = null;
 			Destroy(this.gameObject);
