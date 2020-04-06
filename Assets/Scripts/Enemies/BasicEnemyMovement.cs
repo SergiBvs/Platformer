@@ -23,6 +23,11 @@ public class BasicEnemyMovement : MonoBehaviour
     void Start()
     {
         currentTarget = pivots[0];
+        if (!m_EnemyMovement)
+        {
+
+            this.GetComponent<Animator>().SetTrigger("IDLE");
+        }
         //m_EnemyMovement = true;
         //EnemyLocalScaleY = this.transform.localScale.y;
     }
@@ -32,8 +37,8 @@ public class BasicEnemyMovement : MonoBehaviour
         if (m_EnemyMovement)
         {
             this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, m_EnemySpeed * Time.deltaTime);
-
-            if(currentTarget.position.x < transform.position.x) // left
+            this.GetComponent<Animator>().SetTrigger("WALK");
+            if (currentTarget.position.x < transform.position.x) // left
             {
                 if(!m_ObjectFlipped)
                 {
@@ -68,9 +73,13 @@ public class BasicEnemyMovement : MonoBehaviour
                 targetInt += dir;
                 currentTarget = pivots[targetInt];
                 m_EnemyMovement = false;
-                //this.GetComponent<Animator>().SetTrigger("IDLE");
+                
                 StartCoroutine(WaitTime());
             }
+        }
+        else
+        {
+            this.GetComponent<Animator>().SetTrigger("IDLE");
         }
     }
 
