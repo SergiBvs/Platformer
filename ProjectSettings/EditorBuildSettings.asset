@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DEMO/Level 4 (Ancient).unity
     guid: 6b8ac57555101cb47b83a027a2bd4e87
+  - enabled: 1
+    path: Assets/Scenes/DEMO/ENDING.unity
+    guid: 86882998f96753a4dadf80881f4cacee
   m_configObjects: {}

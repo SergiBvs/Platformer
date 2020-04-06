@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 61481008287615662}
   - component: {fileID: 114876835905806412}
   - component: {fileID: 114624517149124846}
+  - component: {fileID: 95552593792237314}
   m_Layer: 11
   m_Name: ShieldEnemyObject
   m_TagString: BasicEnemy
@@ -201,7 +202,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1091115319785032}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.98, y: -10.37, z: 0}
+  m_LocalPosition: {x: 1.1, y: -10.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4386269614743674}
@@ -229,8 +230,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1359491898245350}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.07, y: 0.91, z: 56.85547}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 157.89742, y: 14.563725, z: 57.027657}
   m_LocalScale: {x: 0.82979685, y: 0.518623, z: 0.82979685}
   m_Children:
   - {fileID: 4506359952450946}
@@ -245,7 +246,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1443570713881636}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.82, y: -10.29, z: 0}
+  m_LocalPosition: {x: 7.58, y: -10.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4386269614743674}
@@ -351,6 +352,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2435322, y: 1.6693316}
   m_EdgeRadius: 0
+--- !u!95 &95552593792237314
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1570877093255438}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f25c0e2aa5a62c4aaba0f91a5cb790d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114624517149124846
 MonoBehaviour:
   m_ObjectHideFlags: 1
