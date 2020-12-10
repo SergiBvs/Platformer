@@ -6,7 +6,7 @@ public class MovingPlatform : MonoBehaviour {
 
     public Transform[] pivots;
     private Transform currentTarget;
-    public float step;
+    public int step = 5;
     public Transform father;
 
     private int targetInt = 0;
@@ -24,7 +24,7 @@ public class MovingPlatform : MonoBehaviour {
 	void Update () {
 
         
-        this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, step);
+        this.transform.position = Vector3.MoveTowards(this.transform.position, currentTarget.position, step * Time.deltaTime);
         if (this.transform.position == currentTarget.position)
         {
             if (targetInt == pivots.Length - 1)
